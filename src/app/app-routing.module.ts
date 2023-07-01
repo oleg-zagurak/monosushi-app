@@ -20,6 +20,7 @@ import { HistoryComponent } from './page/kabinet/history/history.component';
 import { PasswordComponent } from './page/kabinet/password/password.component';
 import { UserInfoComponent } from './page/kabinet/user-info/user-info.component';
 import { OfertaComponent } from './page/oferta/oferta.component';
+import { authAccessGuard } from './shared/guards/auth-access.guard';
 
 
 const routes: Routes = [
@@ -32,20 +33,21 @@ const routes: Routes = [
   {path: 'product-category/:category', component: ProductCategoryComponent},
   {path: 'product-category/:category/:subcategory', component: ProductCategoryComponent},
   {path: 'product/:id', component: ProductInfoComponent, resolve:{product: productResolver}},
-  {path: 'kabinet', component: KabinetComponent, children: [
+  {path: 'kabinet', component: KabinetComponent, canActivate: [authAccessGuard], children: [
     {path: 'info', component: UserInfoComponent},
     {path: 'history', component: HistoryComponent},
     {path: 'password', component: PasswordComponent},
     {path: '', pathMatch: 'full', redirectTo: 'info'},
   ]},
-  {path: 'admin', component: AdminComponent, children: [
+  {path: 'admin', component: AdminComponent, canActivate: [authAccessGuard], children: [
     {path: 'actions', component: AdminActionsComponent},
     {path: 'categories', component: AdminCategoryComponent},
     {path: 'products', component: AdminProductsComponent},
     {path: 'orders', component: AdminOrdersComponent},
     {path: '', pathMatch: 'full', redirectTo: 'actions'},
   ]},
-
+  {path: 'logout', pathMatch: 'full', redirectTo: ''},
+  {path: '**', pathMatch: 'full', redirectTo: ''},
 ];
 
 @NgModule({

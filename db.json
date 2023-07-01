@@ -246,28 +246,19 @@
       "name": "saf",
       "surname": "sdfa",
       "tel": "0502581458",
-      "email": "zaghurak@gmail.com",
+      "email": "admin@gmail.com",
       "id": 1,
-      "role": "USER",
-      "password": "123"
+      "role": "ADMIN",
+      "password": "qwerty123"
     },
     {
       "name": "saf",
       "surname": "sdfa",
       "tel": "0502581458",
-      "email": "pavlo@gmail.com",
-      "id": 1,
+      "email": "user@gmail.com",
+      "id": 2,
       "role": "USER",
-      "password": "123"
-    },
-    {
-      "name": "saf",
-      "surname": "sdfa",
-      "tel": "0502581458",
-      "email": "petro@gmail.com",
-      "id": 1,
-      "role": "USER",
-      "password": "123"
+      "password": "qwerty123"
     }
   ]
 }

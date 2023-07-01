@@ -94,7 +94,7 @@
         display: block;
         width: 100%;
         font-weight: bold;
-        color: #252525;
+        color: $sec-color;
         font-size: 16px;
         line-height: 1em;
         padding: 12px 16px;
@@ -103,8 +103,23 @@
         transition: .35s;
     }
 
-    & .secondary-nav li a:hover {
-        border: 2px solid #b5d8f7;
+    & .secondary-nav li button {
+        display: block;
+        width: 100%;
+        font-weight: bold;
+        text-align: left;
+        color: $sec-color;
+        background-color: transparent;
+        font-size: 16px;
+        line-height: 1em;
+        padding: 12px 16px;
+        border: 2px solid transparent;
+        border-radius: 10px;
+        transition: .35s;
+    }
+
+    & .secondary-nav li a:hover, & .secondary-nav li button:hover {
+        border: 2px solid $main-bg-color;
     }
 }
 
