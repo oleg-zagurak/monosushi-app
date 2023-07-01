@@ -1,0 +1,49 @@
+<div class="cart">
+    <div id="cart-popup-out" class="cart-popup-out">
+        <div class="cart_items">
+            <ng-container *ngIf="orders.length !== 0">
+                <div class="prod_horiz cart-product" *ngFor="let order of orders; let i = index">
+                    <a class="prod_horiz-img" [routerLink]="['product', order.id]">
+                        <img class="img" [src]="order.imagePath">
+                    </a>
+                    <div class="prod_horiz-desc">
+                        <a class="title" [routerLink]="['product', order.id]">{{order.name}}</a>
+                        <div class="prod_horiz-controls">
+                            <div class="thumb-input-number">
+                                <button type="button" class="decrement in-cart"
+                                    (click)="setAmount(false, order)">-</button>
+                                <input class="product-qty" [value]="order.count" readonly="" tabindex="-1" max="999"
+                                    name="count">
+                                <button type="button" class="increment in-cart"
+                                    (click)="setAmount(true, order)">+</button>
+                            </div>
+                            <div class="price_default">
+                                <b class="price">{{order.price}}</b>
+                                грн
+                            </div>
+
+                            <button type="button" class="btn-close remove-product" (click)="delete(order.id)">
+                                <div class="trash"></div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="orders.length === 0">
+                <div class="cart-empty-message">
+                    <div class="cart-empty-img">
+                        <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/icons/cart-empty-img.svg"
+                            alt="">
+                    </div>
+                    <div class="title h5">Кошик порожній</div>
+                    <a class="btn btn-primary" href="/">Перейти до каталогу</a>
+                </div>
+            </ng-container>
+        </div>
+        <div class="cart_bottom bg-mono">
+            <div class="cart_price-wrap">
+                Сума: <b id="card-total-price" class="card-total-price">{{totalPrice}}</b> грн </div>
+            <a href="/" class="btn disabled" id="cart-submit">ОФОРМИТИ ЗАМОВЛЕННЯ</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,92 @@
+@import '../../shared/styles/variables';
+@import '../../shared/styles/mixins';
+
+
+.wrapper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    width: 100vw;
+    height: 100vh;
+    background-color: $default-bg-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-container {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    position: relative;
+    text-align: left;
+    background: #fff;
+    border-radius: 10px;
+    max-width: 600px;
+
+    & .popup-align {
+        padding: 50px 60px 45px 60px;
+        overflow: hidden;
+        text-align: center;
+        font-size: 18px;
+        line-height: 1.5em;
+    }
+
+    & .popup-title {
+        margin-bottom: 5px;
+    }
+
+    & b {
+        color: $sec-color;
+    }
+
+    & .popup-form {
+        text-align: left;
+
+        & .input {
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+    }
+
+    & .popup-form:not(:first-child) {
+        margin-top: 30px;
+    }
+
+    & .popup-form:not(:last-child) {
+        margin-bottom: 20px;
+    }
+}
+
+.input {
+    width: 100%;
+    font-size: 16px;
+    height: 56px;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    color: $sec-color;
+    line-height: 56px;
+    padding: 0 20px 0 23px;
+    -webkit-transition: 0.35s;
+    transition: 0.35s;
+    text-overflow: ellipsis;
+}
+
+.btn-block {
+    @include btn($main-bg-color, $default-bg-color, 16px 22px, 20px);
+    display: block;
+    width: 100%;
+    &:disabled{
+        cursor: default;
+        opacity: 0.6;
+    }
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+    line-height: 30px;
+}

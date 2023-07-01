@@ -1,0 +1,15 @@
+<div class="wrapper">
+    <div class="popup-container">
+        <div class="popup-align text">
+            <div class="popup-title h4"><b>Вхід в кабінет</b></div>
+            <form class="form popup-form" id="login-form" [formGroup]="loginForm">
+                <input type="email" class="input" name="login" placeholder="*Ваш email" formControlName="email">
+                <input type="password" class="input" name="password" placeholder="*Пароль" formControlName="password">
+
+                <button class="btn btn-primary btn-block" type="button" [disabled]="disabledOnLoad"
+                    (click)="loginUser()">Увійти в кабінет</button>
+                <div class="error-message" *ngIf="authError">Помилка входу. Невідомий користувач.</div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -24,6 +24,8 @@ import { MapComponent } from './components/map/map.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { ActionInfoComponent } from './page/action-info/action-info.component';
 import { ProductInfoComponent } from './page/product-info/product-info.component';
 import { HeaderBasketComponent } from './components/header-basket/header-basket.component';
@@ -34,6 +36,11 @@ import { HistoryComponent } from './page/kabinet/history/history.component';
 import { PasswordComponent } from './page/kabinet/password/password.component';
 import { SavePopupComponent } from './components/save-popup/save-popup.component';
 import { OfertaComponent } from './page/oferta/oferta.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './shared/module/shared-module/shared.module';
+import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.component';
+import { BasketDialogComponent } from './components/basket-dialog/basket-dialog.component';
+import { AdminAuthComponent } from './page/admin-auth/admin-auth.component';
 
 
 @NgModule({
@@ -63,6 +70,9 @@ import { OfertaComponent } from './page/oferta/oferta.component';
     PasswordComponent,
     SavePopupComponent,
     OfertaComponent,
+    AuthDialogComponent,
+    BasketDialogComponent,
+    AdminAuthComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,7 +81,11 @@ import { OfertaComponent } from './page/oferta/oferta.component';
     HttpClientModule,
     ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideStorage(() => getStorage())
+    provideStorage(() => getStorage()),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    SharedModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,45 @@
+//auth
+
+.bg{
+    background-color: rgba(0, 0, 0, 0.603);
+    transition-duration: 0.35s;
+}
+
+.wrapper{
+    transition-duration: 0.35s;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+// basket
+
+.basket-bg{
+    background-color: rgba(0, 0, 0, 0.603);
+    animation-duration: 0.35s;
+    top: 110px;
+    backdrop-filter: blur(2px);
+}
+
+.basket-wrapper{
+    position: absolute !important;
+    right: 0;
+    top: 110px;
+    box-shadow: none !important;
+    overflow: hidden;
+
+    & .mat-mdc-dialog-container .mdc-dialog__surface{
+        border-radius: 0 0 10px 10px
+    }
+}
+
+@media (max-width: 1599px) {
+    .basket-wrapper, .basket-bg{
+        top: 95px;
+    }
+}
+
+@media (max-width: 1199px) {
+    .basket-wrapper, .basket-bg{
+        top: 60px;
+    }
+}
