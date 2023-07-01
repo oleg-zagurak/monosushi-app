@@ -1,0 +1,25 @@
+<div class="header-m"></div>
+<div class="wrapper">
+    <nav class="nav">
+        <ul class="menu">
+            <li class="menu-item">
+                <a [routerLink]="'actions'" [routerLinkActive]="'active'" class="menu-link">Акції</a>
+            </li>
+            <li class="menu-item">
+                <a [routerLink]="'categories'" [routerLinkActive]="'active'" class="menu-link">Категорії</a>
+            </li>
+            <li class="menu-item">
+                <a [routerLink]="'products'" [routerLinkActive]="'active'" class="menu-link">Товари</a>
+            </li>
+            <li class="menu-item">
+                <a [routerLink]="'orders'" [routerLinkActive]="'active'" class="menu-link">Замовлення</a>
+            </li>
+        </ul>
+        <div class="btn-block">
+            <button class="btn">Вихід</button>
+        </div>
+    </nav>
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+</div>

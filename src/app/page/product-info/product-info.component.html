@@ -1,0 +1,51 @@
+<div class="header-m"></div>
+<div class="container">
+
+    <ul class="breadcrumbs">
+        <li><a href="/"><span>Головна</span></a></li>
+        <li><a [routerLink]="['/product-category', product.category.path]"><span>{{product.category.name}}</span></a>
+        </li>
+        <li *ngIf="sub"><a
+                [routerLink]="['/product-category', product.category.path, product.category.subcategory]"><span>
+                    {{subName}}
+                </span></a>
+        </li>
+        <li class="active"><span>{{product.name}}</span></li>
+    </ul>
+
+    <div class="spacer-md"></div>
+
+    <div class="row">
+        <div class="col">
+            <div class="image-wrapper">
+                <div class="product-detail-img">
+                    <img class="img swiper-lazy swiper-lazy-loaded" [src]="product.imagePath" [alt]="product.name"
+                        oncontextmenu="return false">
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="product_detail">
+                <h1 class="title h2">{{product.name}}</h1>
+                <div class="description"><b>Склад: </b>{{product.ingredients}}</div>
+                <div class="product_size"><b>Вага: </b><span class="size">{{product.weight}}</span> г</div>
+                <ul class="product_variations">
+                </ul>
+                <div class="product_detail-controls">
+                    <div class="product_price-wrap">
+                        <div class="product_price" itemprop="price"><b class="price">{{product.count *
+                                product.price}}</b> грн</div>
+                        <div class="product_price-old hidden"><b class="price-old">{{ product.price}}</b> грн</div>
+                    </div>
+                    <div class="thumb-input-number">
+                        <button type="button" class="decrement" (click)="setAmount(false)">-</button>
+                        <input class="product-qty" [value]="product.count" readonly="" tabindex="-1" max="999">
+                        <button type="button" class="increment" (click)="setAmount(true)">+</button>
+                    </div>
+                    <button class="btn btn-small btn-primary order-btn add-to-cart-btn"
+                        (click)="addOrder()">ЗАМОВИТИ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

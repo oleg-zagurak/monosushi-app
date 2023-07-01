@@ -1,0 +1,37 @@
+<div class="header-m"></div>
+<main>
+    <div class="">
+        <div class="container">
+            <ul class="breadcrumbs">
+                <li><a href="/"><span>Головна</span></a></li>
+                <li><a href="/actions/"><span>Акції</span></a></li>
+                <li class="active"><span>{{action.name}}</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="spacer-md"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="mini-banner bg-mono">
+                    <div class="center-info type-2">
+                        <h2 class="title text-cut-2">{{action.title}}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="spacer-md"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="simple-page">
+                    <ul>
+                        <li *ngFor="let desc of description">{{desc}}.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="large"></div>
+</main>

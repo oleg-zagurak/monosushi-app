@@ -1,0 +1,10 @@
+<div class="popup-wrapper" [ngClass]="{'active': show}" (click)="closeOnBg($event)">
+    <div class="bg-layer" ></div>
+    <div class="popup-content" id="text-popup" [ngClass]="{'active': show}">
+        <div class="layer-close" id="bg"></div>
+        <div class="popup-container size-1">
+            <div class="popup-align text-center text">Дані збережено</div>
+            <button class="btn-close close-popup"><span (click)="close()"></span></button>
+        </div>
+    </div>
+</div>

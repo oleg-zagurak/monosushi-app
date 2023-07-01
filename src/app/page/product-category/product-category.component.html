@@ -1,0 +1,58 @@
+<div class="header-m"></div>
+<div class="center-info" *ngIf="!homeLocation">
+    <h2 class="title">{{categoryName}}</h2>
+</div>
+<div class="container">
+    <div class="categories-menu" *ngIf="showFilterNav">
+        <ul class="categories-list" #list (click)="checkActiveFilter($event, list)">
+            <li class="categories-list-item active"><span class="category_ajax" data-subcategory="all">Всі</span>
+            </li>
+            <li class="categories-list-item "><span class="category_ajax"
+                    data-subcategory="filadelfiya">Філадельфія</span></li>
+            <li class="categories-list-item "><span class="category_ajax"
+                    data-subcategory="kaliforniya">Каліфорнія</span></li>
+            <li class="categories-list-item "><span class="category_ajax" data-subcategory="zapecheni">Запечені</span>
+            </li>
+            <li class="categories-list-item "><span class="category_ajax" data-subcategory="firmovi">Фірмові</span></li>
+            <li class="categories-list-item "><span class="category_ajax" data-subcategory="premium">Преміум</span></li>
+            <li class="categories-list-item "><span class="category_ajax" data-subcategory="maki">Макі</span></li>
+        </ul>
+    </div>
+    <div class="row product-row">
+        <div class="col" *ngFor="let product of (filteredProducts.length > 0 ? filteredProducts : products)">
+            <div class="product js-product border">
+                <div class="product_image-wrap">
+                    <a class="product_image" [routerLink]="['/product', product.id]">
+                        <img class="img img-default imgLoaded" [src]="product.imagePath" [alt]="product.name">
+                    </a>
+                </div>
+
+                <div class="product_title-wrap">
+                    <div class="product_title title h5 m-auto">
+                        <a [routerLink]="['/product', product.id]">{{product.name}}</a>
+                    </div>
+                </div>
+
+                <div class="product_desc">
+                    <p>{{product.ingredients}}</p>
+                    <div class="product_size"><span class="size">{{product.weight}}</span></div>
+                </div>
+
+                <div class="product_controls">
+                    <div class="product_price-wrap">
+                        <div class="product_price" itemprop="price"><b class="price">{{product.price}}</b> грн</div>
+                        <div class="product_price-old hidden"><b class="price-old">267</b> грн</div>
+                    </div>
+                    <div class="thumb-input-number">
+                        <button type="button" class="decrement" (click)="setAmount(false, product)">-</button>
+                        <input [value]="product.count" readonly="" class="product-qty" tabindex="-1" max="999"
+                            name="count">
+                        <button type="button" class="increment" (click)="setAmount(true, product)">+</button>
+                    </div>
+                    <button class="btn btn-small btn-primary order-btn add-to-cart-btn"
+                        (click)="addOrder(product)">Замовити</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

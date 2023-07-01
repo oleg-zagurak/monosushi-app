@@ -1,0 +1,28 @@
+<div class="header-m"></div>
+<div class="center-info">
+    <h2 class="title">Акції</h2>
+</div>
+<div class="spacer-md"></div>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col" *ngFor="let action of actions">
+                <div class="block-info">
+                    <a class="block-info-link" [routerLink]="['/action', action.id]">
+                        <div class="block-info-img">
+                            <img [src]="action.imagePath"
+                                [alt]="action.name" class="imgLoaded">
+                        </div>
+                        <h5 class="title center">{{action.name}}</h5>
+                    </a>
+                    <div class="text-cut">
+                    </div>
+                    <hr>
+                    <a class="btn btn-small btn-primary btn-block-center btn-fix-2"
+                    [routerLink]="['/action', action.id]">дізнатись більше</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="middle"></div>

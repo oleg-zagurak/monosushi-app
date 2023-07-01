@@ -1,0 +1,64 @@
+<div class="form-wrapper">
+    <div class="form-btn-block">
+        <button class="form-btn" (click)="show()" [disabled]="editable">{{formOpened ? 'Закрити' : 'Додати акцію'}}</button>
+    </div>
+    <div class="form" [ngClass]="formOpened ? 'open' : ''">
+        <form [formGroup]="actionsForm" (ngSubmit)="addAction()">
+            <div class="row">
+                <input type="text" formControlName="name" name="name" placeholder="*Назва">
+                <input type="text" formControlName="title" name="title" placeholder="*Заголовок">
+            </div>
+            <div class="row">
+                <textarea name="description" formControlName="description" placeholder="*Опис"></textarea>
+            </div>
+            <div class="row">
+                <ng-container *ngIf="!isUploaded">
+                    <div class="file-block">
+                        <input type="file" name="image" (change)="upload($event)" accept="image/*">
+                        <div class="progress" [style.width.%]="progress"></div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="isUploaded">
+                    <div class="preview">
+                        <img [src]="getByControl('imagePath')" alt="">
+                        <button type="button" class="btn" (click)="deleteImg()">Видалити</button>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="row">
+                <input type="hidden" name="imagePath" formControlName="imagePath">
+                <button *ngIf="!editable" type="submit" class="submit-btn" [disabled]="actionsForm.invalid"
+                    (click)="addAction()">Додати</button>
+                <button *ngIf="editable" type="submit" class="submit-btn" [disabled]="actionsForm.invalid"
+                    (click)="update()">Зберегти</button>
+            </div>
+        </form>
+    </div>
+</div>
+<table id="table">
+    <col style="width: 10%">
+    <col style="width: 15%">
+    <col style="width: 20%">
+    <col style="width: 35%">
+    <col style="width: 10%">
+    <col style="width: 10%">
+    <tr class="thead">
+        <th>Дата</th>
+        <th>Назва</th>
+        <th>Заголовок</th>
+        <th>Опис</th>
+        <th>Картинка</th>
+        <th>Дії</th>
+    </tr>
+    <tr *ngFor="let action of actions; let i = index">
+        <td>{{action?.date}}</td>
+        <td>{{action?.name}}</td>
+        <td>{{action?.title}}</td>
+        <td>{{action.description |slice:0:75}}...</td>
+        <td><img class="img" [src]="action.imagePath" alt=""></td>
+        <td>
+            <button class="btn" (click)="editAction(i)">Редагувати</button>
+            <button class="btn" (click)="deleteAction(action.id)" [disabled]="editable">Видалити</button>
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,60 @@
+@import '../../shared/styles/variables';
+
+.container {
+    width: 100%;
+    max-width: 1750px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 20px auto 0;
+}
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    justify-content: center;
+}
+
+.col {
+    flex: 0 0 58.333333%;
+    max-width: 58.333333%;
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.center-info {
+    margin: 0 auto;
+    max-width: 550px;
+    text-align: center;
+
+    & .title {
+        position: relative;
+        display: inline-block;
+        padding-top: 10px;
+        margin-bottom: 40px;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: 10px;
+            width: 100%;
+            height: 5px;
+            background: $main-bg-color;
+        }
+    }
+}
+
+.title {
+    color: #252525;
+    font-weight: 700;
+    text-align: center;
+}
+
+.text>*, .article>* {
+    margin-bottom: 20px;
+}

@@ -1,0 +1,25 @@
+@import '../../shared/styles/variables';
+
+@mixin btn($bg, $hover-bg, $p, $lh) {
+    padding: $p;
+    background: $bg;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    line-height: $lh;
+    text-transform: none;
+    transition: .35s;
+    cursor: pointer;
+    vertical-align: bottom;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: $font-size--normal;
+    color: $sec-color;
+    font-weight: bold;
+    position: relative;
+    font-family: $main-ff;
+
+    &:hover {
+        background: $hover-bg;
+        border: 2px solid $bg;
+    }
+}

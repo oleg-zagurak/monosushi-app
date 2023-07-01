@@ -1,0 +1,125 @@
+<div class="header-m"></div>
+<div class="slider-wpapper">
+    <app-slider></app-slider>
+</div>
+<div class="bg-mono">
+    <div class="mono-container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="after-banner-item">
+                    <div class="after-banner-img">
+                        <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/mn-delivery-img.svg" alt="">
+                    </div>
+                    <a routerLink="/dostavka-ta-oplata" class="btn">Зони доставки</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="after-banner-item">
+                    <div class="after-banner-img">
+                        <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/mono-supermen.svg" alt="">
+                    </div>
+                    <div class="after-banner-info">
+                        Середній час доставки в зеленій зоні
+                        <b>00:43:00</b>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="after-banner-item">
+                    <div class="after-banner-img">
+                        <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/mono-bonus.svg" alt="">
+                    </div>
+                    <div class="after-banner-info">
+                        Наш графік роботи Працюємо з
+                        <b>11:00</b>
+                        до
+                        <b>22:30</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-product-category [homeLocation]="true"></app-product-category>
+<div class="seo-block">
+    <div class="container">
+        <div class="row">
+            <div class="seo-content">
+                <h3 class="title">
+                    Доставка суші у Львові від "Monosushi"
+                </h3>
+                <div class="row seo-inner">
+                    <div class="inner-content">
+                        <div class="seo-info article">
+                            <p>
+                                <strong>Безкоштовна доставка суші у Львові </strong>
+                                <strong>Monosushi</strong>
+                                <strong>.</strong>
+                            </p>
+                            <p>
+                                Нам три роки. За цей час ми підкорили серця багатьох львів’ян. І це лише початок! Адже
+                                кожного місяця ми стараємось для Вас і стаємо кращими у кожному аспекті. Ми не ті, про
+                                кого кажуть: «Зіпсувались». Ми вкладаємо всю душу в нашу компанію та радіємо кожному
+                                Вашому позитивному відгуку!
+                            </p>
+                            <div class="more-text" [ngClass]="moreText ? 'open-more-text' : ''">
+                                <div class="article" #article>
+                                    <p>
+                                        <strong>Чому ми?</strong>
+                                    </p>
+                                    <ol>
+                                        <li>
+                                            <strong>Якість продуктів.</strong>
+                                            Спробувавши десятки різних доставок ми зрозуміли, що запорукою та секретом
+                                            смаку завжди є свіжі та якісні продукти. Саме тому ми з особливим трепетом
+                                            та уважністю обираємо продукти, які поїдуть до нас на кухню.
+                                        </li>
+                                        <li>
+                                            <strong>Неймовірний смак.</strong>
+                                            Так, ми Вас розуміємо. Важко в це повірити коли кожна доставка обіцяє
+                                            «смачний продукт». Проте, ми використовуємо інгредієнти, які за якістю є на
+                                            порядок вище тих, які використовуть наші конкуренти у своїх рецептах. Ми не
+                                            економимо і використовуємо лише найбільш якісні та дорогі продукти для
+                                            створення наших страв! Ну і чого тільки варті наші Запечені сирні суші! Вони
+                                            однозначно є хедлайнерами нашого меню! Це те, чого Ви раніше ще точно не
+                                            куштували!
+                                        </li>
+                                        <li>
+                                            <strong>Великі порції.</strong>
+                                            Ми любимо смачно та ситно поїсти! Впевнені, Ви теж! Тому, ми з неабияким
+                                            захватом підійшли до розробки грамажу наших ролів. Ми намагались віднайти
+                                            ідеальний розмір аби наші моносуші були доволі ситними, але в той же час
+                                            комфортними для споживання.
+                                            <br>
+                                            Також, кожного разу при приготуванні ролів ми використовуємо ваги аби страва
+                                            відповідала грамажу вказаному на сайті!
+                                        </li>
+                                        <li>
+                                            <strong>Абсолютна чистота на кухні.</strong>
+                                            При приготуванні страв ми притримуємось усіх санітарних норм та правил аби
+                                            Ви могли бути на 100% впевнені в якості та безпечності страв.
+                                        </li>
+                                        <li>
+                                            <strong>Гарне упакування та уважність до деталей!</strong>
+                                            Monosushi – були створені командою перфекціоністів, тому кожна деталь нашого
+                                            упакування продумана до дрібниць
+                                        </li>
+                                    </ol>
+                                    <ul>
+                                        <li>Фотографії продуктів несуть ознайомчий характер і можуть відрізнятися від оригіналу.</li>
+                                    </ul>
+                                    <ul>
+                                        <li>Замовлення вважається прийнятим з моменту опрацювання його оператором колл-центру дзвінком до клієнта.</li>
+                                    </ul>
+                                </div>
+                                <div class="btn-link" (click)="show(article)">
+                                    {{moreText ? 'Згорнути' : 'Розгорнути'}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,90 @@
+<div class="burger-menu border" [ngClass]="{'active': state}" (click)="state = !state; showAuth()">
+    <div class="header-user" [routerLink]="'admin'">
+        <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt="user">
+    </div>
+    <ul class="secondary-nav" *ngIf="false">
+        <li class="menu-item">
+            <a routerLink="/dostavka-ta-oplata">
+                <div>Доставка та оплата</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a routerLink="/about-us">
+                <div>Про нас</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a routerLink="/actions">
+                <div>Акції</div>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="popup-wrapper" [ngClass]="{'active': showModal}" (click)="close($event)" *ngIf="false">
+    <div class="bg-layer"></div>
+    <div class="popup-content" [ngClass]="{'active': showModal && !regStatus}">
+        <div class="layer-close cancel"></div>
+        <div class="popup-container" [ngClass]="{'active': showModal && !regStatus}">
+            <div class="popup-align text">
+                <div class="popup-title h4"><b>Вхід в кабінет</b></div>
+                <form class="form popup-form" id="login-form" [formGroup]="loginForm">
+                    <input type="email" class="input" name="login" placeholder="*Ваш email" formControlName="email">
+                    <input type="password" class="input" name="password" placeholder="*Пароль" formControlName="password">
+
+                    <button class="btn btn-primary btn-block" type="button" [disabled]="disabledOnLoad"
+                    (click)="login()">Увійти в кабінет</button>
+                    <div class="error-message" *ngIf="loginError">Помилка входу. Невідомий користувач.</div>
+                </form>
+                <div class="links">
+                    <a class="open-popup">Забули пароль?</a>
+                    <a class="open-popup" (click)="showReg()">Зареєструватись</a>
+                </div>
+            </div>
+            <button class="btn-close"><span class="cancel"></span></button>
+        </div>
+    </div>
+    <div class="popup-content reg" [ngClass]="{'active': regStatus}">
+        <div class="layer-close cancel"></div>
+        <div class="popup-container" [ngClass]="{'active': regStatus}">
+            <div class="popup-align text">
+                <div class="popup-title h4"><b>Зареєструватись</b></div>
+                <form class="form popup-form" id="registration-form" [formGroup]="registerForm">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <input class="input" type="text" name="first_name" placeholder="Ваше ім'я"
+                                formControlName="name">
+                        </div>
+                        <div class="col-sm-6">
+                            <input class="input" type="text" name="last_name" placeholder="Ваше прізвище"
+                                formControlName="surname">
+                        </div>
+                    </div>
+                    <input class="input inputmask" name="phone" type="text" placeholder="Ваш телефон"
+                        inputmode="numeric" formControlName="tel">
+                    <input type="email" class="input" name="email" placeholder="Ваш email" formControlName="email">
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <input class="input" name="password" type="password" placeholder="Пароль"
+                                formControlName="password">
+                        </div>
+                        <div class="col-sm-6">
+                            <input class="input" name="password2" type="password" placeholder="Повторіть пароль"
+                                formControlName="passwordConfirmation">
+                        </div>
+                    </div>
+                    <label class="checkbox-entry">
+                        <input type="checkbox" name="agreement" formControlName="agreement">
+                        <span>
+                            Я погоджуюсь з <a href="#">Правилами користування</a>
+                        </span>
+                    </label>
+                    <button class="btn btn-primary btn-block" type="submit">Зареєструватись</button>
+                    <div class="error-message"></div>
+                </form>
+                <div class="links reg">Вже зареєстровані? <a class="open-popup" (click)="showReg()">Увійти</a></div>
+            </div>
+            <button class="btn-close close-popup"><span class="cancel"></span></button>
+        </div>
+    </div>
+</div>

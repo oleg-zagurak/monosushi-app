@@ -1,0 +1,273 @@
+{
+  "actions": [
+    {
+      "name": "Рол тижня",
+      "title": "50% знижки на \"Рол тижня\"",
+      "description": "Щотижня діє знижка 50% на один з ролів у нашому меню. “Рол тижня” ви можете знайти на головній сторінці нашого сайту. Знижка діє при мінімальній сумі замовлення 300 грн. Ця акція не поєднується з іншими акціями.",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Factions%2Fimgonline-com-ua-compressed-ryna9n84oqh1-scaled-697x379.jpg?alt=media&token=4c6cc120-bc1a-4295-a616-c187a237dc44",
+      "date": "21.06.2023",
+      "id": 1
+    },
+    {
+      "name": "\"3+1=5\"",
+      "title": "\"3+1=5\"",
+      "description": "Замовляйте 5 ролів, а платіть за 4.\nЗамовляйте 10 ролів, а платіть за 8 і так далі.\nБезкоштовним вважається рол з найменшою вартістю.\nЦя акція не поєднується з іншими акціями.",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Factions%2Fimgonline-com-ua-compressed-pa0akdpwddstmsv1-scaled-697x379.jpg?alt=media&token=4a4585d8-8229-413d-b241-1361d605619f",
+      "date": "31.05.2023",
+      "id": 2
+    }
+  ],
+  "categories": [
+    {
+      "name": "роли",
+      "path": "roli",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Fcategories%2Fnav-img-rolls.svg?alt=media&token=8948f847-29f4-4d56-be44-37fd5be14f1c",
+      "id": 1
+    },
+    {
+      "name": "сети",
+      "path": "setu",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Fcategories%2Fnav-img-sets.svg?alt=media&token=a13c9543-b3ce-4905-abe1-de110df710e0",
+      "id": 2
+    },
+    {
+      "name": "напої",
+      "path": "napoyi",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Fcategories%2Fnav-img-drinks.svg?alt=media&token=7fa1b6d1-d4b0-4170-8b4f-60439f26f479",
+      "id": 3
+    },
+    {
+      "name": "соуси",
+      "path": "sousi",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Fcategories%2Ficon.svg?alt=media&token=fe1c6cf7-8925-413a-ab1d-24331029ee7c",
+      "id": 4
+    }
+  ],
+  "products": [
+    {
+      "name": "Філадельфія з лососем",
+      "path": "filadelfiya-z-lososem",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Fproducts%2F1.-filadelfiya-z-lososem.jpg.pagespeed.ce.axvTz8qDqj.jpg?alt=media&token=881bb799-a5a2-43c6-a89d-c0faf69a4f12",
+      "ingredients": "Риc, крем сир, огірок, лосось",
+      "weight": 280,
+      "price": 267,
+      "count": 1,
+      "category": {
+        "name": "роли",
+        "path": "roli",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Fcategories%2Fnav-img-rolls.svg?alt=media&token=8948f847-29f4-4d56-be44-37fd5be14f1c",
+        "id": 1,
+        "subcategory": "filadelfiya"
+      },
+      "id": 1
+    },
+    {
+      "name": "Філадельфія в кунжуті",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Fproducts%2Ffiladelfiya-v-kunzhuti.jpg.pagespeed.ce.OnHk5blNMI.jpg?alt=media&token=28b7f5ec-36b8-4f48-aade-bc3001786388",
+      "price": 248,
+      "weight": "240 г",
+      "path": "filadelfiya-v-kunzhuti",
+      "ingredients": "Рис, крем сир, огірок, лосось, кунжут",
+      "count": 1,
+      "category": {
+        "subcategory": "filadelfiya",
+        "name": "роли",
+        "path": "roli",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Fcategories%2Fnav-img-rolls.svg?alt=media&token=8948f847-29f4-4d56-be44-37fd5be14f1c",
+        "id": 1
+      },
+      "id": 2
+    },
+    {
+      "name": "Каліфорнія з крабом",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Fproducts%2Fkaliforniya-z-krabom-v-kunzhuti.jpg.pagespeed.ce.bvIx-bv6N4.jpg?alt=media&token=c22cc32d-dcd7-475d-b5ed-18e22915b923",
+      "price": 243,
+      "weight": "250 г",
+      "path": "kaliforniya-z-krabom",
+      "ingredients": "Рис, спайсі соус, авокадо, огірок, краб, кунжут",
+      "count": 1,
+      "category": {
+        "subcategory": "kaliforniya",
+        "name": "роли",
+        "path": "roli",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Fcategories%2Fnav-img-rolls.svg?alt=media&token=8948f847-29f4-4d56-be44-37fd5be14f1c",
+        "id": 1
+      },
+      "id": 3
+    },
+    {
+      "name": "Каліфорнія з лососем",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Fproducts%2Fkaliforniya-z-lososem-v-kunzhuti.jpg.pagespeed.ce.7bkd5a58bq.jpg?alt=media&token=a3a6d13e-8ab7-45e8-b46f-09865515b1b6",
+      "price": 253,
+      "weight": "250 г",
+      "path": "kaliforniya-z-lososem-2",
+      "ingredients": "Рис, спайсі соус, авокадо, огірок, лосось, кунжут",
+      "count": 1,
+      "category": {
+        "subcategory": "kaliforniya",
+        "name": "роли",
+        "path": "roli",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Fcategories%2Fnav-img-rolls.svg?alt=media&token=8948f847-29f4-4d56-be44-37fd5be14f1c",
+        "id": 1
+      },
+      "id": 4
+    },
+    {
+      "name": "Сет Філадельфія",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Fproducts%2Fimgonline-com-ua-compressed-jknw6idh54664-scaled.jpg.pagespeed.ce.4A9elt-ybs.jpg?alt=media&token=42489666-33f2-426a-9f73-d1908994fb60",
+      "price": 1075,
+      "weight": "1070 г",
+      "path": "zapechenyj-set",
+      "ingredients": "Філадельфія: з лососем / в кунжуті / з тунцем / з вугрем",
+      "count": 1,
+      "category": {
+        "name": "сети",
+        "path": "setu",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Fcategories%2Fnav-img-sets.svg?alt=media&token=a13c9543-b3ce-4905-abe1-de110df710e0",
+        "id": 2
+      },
+      "id": 5
+    },
+    {
+      "name": "Запечений сет",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Fproducts%2Fimgonline-com-ua-compressed-wnclohqe80-scaled.jpg.pagespeed.ce.DxC77gzUKm.jpg?alt=media&token=6dc41c27-4ec9-4a74-901c-bfb0b325965d",
+      "price": 570,
+      "weight": "680 г",
+      "path": "zapechenyj-set-2",
+      "ingredients": "Запечений сирний з креветкою / Запечений моно з лососем",
+      "count": 1,
+      "category": {
+        "name": "сети",
+        "path": "setu",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Fcategories%2Fnav-img-sets.svg?alt=media&token=a13c9543-b3ce-4905-abe1-de110df710e0",
+        "id": 2
+      },
+      "id": 6
+    },
+    {
+      "name": "Сет Каліфорнія",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Fproducts%2Fkaliforniya-scaled.jpg.pagespeed.ce.VRDkpzkAjV.jpg?alt=media&token=ce8f8630-0b8e-4179-857e-bc772d96a2a0",
+      "price": 978,
+      "weight": "1000 г",
+      "path": "set-kunzhutnyj",
+      "ingredients": "Каліфорнія: з лососем / з креветкою / з крабом / з вугрем",
+      "count": 1,
+      "category": {
+        "name": "сети",
+        "path": "setu",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Fcategories%2Fnav-img-sets.svg?alt=media&token=a13c9543-b3ce-4905-abe1-de110df710e0",
+        "id": 2
+      },
+      "id": 7
+    },
+    {
+      "name": "Класичний сет",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Fproducts%2Fimgonline-com-ua-compressed-onqhpofp61f5-scaled.jpg.pagespeed.ce.0579XfiJs3.jpg?alt=media&token=bfd05ea3-9c52-4823-a6fc-d803a064c193",
+      "price": 475,
+      "weight": "530 г",
+      "path": "klasychnyj-set",
+      "ingredients": "Філадельфія з лососем / Каліфорнія з крабом",
+      "count": 1,
+      "category": {
+        "name": "сети",
+        "path": "setu",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Fcategories%2Fnav-img-sets.svg?alt=media&token=a13c9543-b3ce-4905-abe1-de110df710e0",
+        "id": 2
+      },
+      "id": 8
+    },
+    {
+      "name": "Pepsi",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Fproducts%2Fpepsicola.jpg.pagespeed.ce._GE3wDu348.jpg?alt=media&token=7177b658-ecbb-4760-86ae-ff80c3448554",
+      "price": 35,
+      "weight": "0.33 л",
+      "path": "coca-cola",
+      "ingredients": " ",
+      "count": 1,
+      "category": {
+        "name": "напої",
+        "path": "napoyi",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Fcategories%2Fnav-img-drinks.svg?alt=media&token=7fa1b6d1-d4b0-4170-8b4f-60439f26f479",
+        "id": 3
+      },
+      "id": 9
+    },
+    {
+      "name": "Fanta апельсин",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Fproducts%2Ffanta-033.jpg.pagespeed.ce.AS23fDMltR.jpg?alt=media&token=a7340938-b82f-4b6f-8e2e-75434d8f06d5",
+      "price": 31,
+      "weight": "0.33 л",
+      "path": "sik-apelsyn",
+      "ingredients": " ",
+      "count": 1,
+      "category": {
+        "name": "напої",
+        "path": "napoyi",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Fcategories%2Fnav-img-drinks.svg?alt=media&token=7fa1b6d1-d4b0-4170-8b4f-60439f26f479",
+        "id": 3
+      },
+      "id": 10
+    },
+    {
+      "name": "Васабі",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Fproducts%2F4444.png.pagespeed.ce.eju3nbNNBX.png?alt=media&token=3c96298f-bfee-434c-b414-24ebfd59204c",
+      "price": 12,
+      "weight": "25 г",
+      "path": "vasabi",
+      "ingredients": " ",
+      "count": 1,
+      "category": {
+        "name": "соуси",
+        "path": "sousi",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Fcategories%2Ficon.svg?alt=media&token=fe1c6cf7-8925-413a-ab1d-24331029ee7c",
+        "id": 4
+      },
+      "id": 11
+    },
+    {
+      "name": "Імбир",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Fproducts%2F3333.png.pagespeed.ce.vQR20Z8Iaq.png?alt=media&token=c1ce4e19-858e-4faa-b5f0-81238e9ffa70",
+      "price": 12,
+      "weight": "30 г",
+      "path": "imbyr",
+      "ingredients": " ",
+      "count": 1,
+      "category": {
+        "name": "соуси",
+        "path": "sousi",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/mono-homework.appspot.com/o/images%2Fcategories%2Ficon.svg?alt=media&token=fe1c6cf7-8925-413a-ab1d-24331029ee7c",
+        "id": 4
+      },
+      "id": 12
+    }
+  ],
+  "users": [
+    {
+      "name": "saf",
+      "surname": "sdfa",
+      "tel": "0502581458",
+      "email": "zaghurak@gmail.com",
+      "id": 1,
+      "role": "USER",
+      "password": "123"
+    },
+    {
+      "name": "saf",
+      "surname": "sdfa",
+      "tel": "0502581458",
+      "email": "pavlo@gmail.com",
+      "id": 1,
+      "role": "USER",
+      "password": "123"
+    },
+    {
+      "name": "saf",
+      "surname": "sdfa",
+      "tel": "0502581458",
+      "email": "petro@gmail.com",
+      "id": 1,
+      "role": "USER",
+      "password": "123"
+    }
+  ]
+}

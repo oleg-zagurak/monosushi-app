@@ -1,0 +1,37 @@
+@import '../../shared/styles/variables';
+
+.delivery-map-block {
+    position: relative;
+    margin: 80px 0 60px;
+    & .delivery-inputs {
+        position: absolute;
+        top: 40px;
+        left: 40px;
+        width: 505px;
+        z-index: 1;
+        background-color: $default-bg-color;
+        border-radius: 10px;
+    }
+    & .map-block {
+        height: 625px;
+        max-height: calc(56.3vw - 30px);
+        margin-bottom: 0;
+        & .gm-style {
+            font: 400 11px Roboto, Arial, sans-serif;
+            text-decoration: none;
+        }
+    }
+}
+
+.input {
+    font-size: 16px;
+    height: 56px;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    color: $sec-color;
+    line-height: 56px;
+    padding: 0 20px 0 23px;
+    transition: 0.35s;
+    text-overflow: ellipsis;
+    width: 100%;
+}

@@ -1,0 +1,23 @@
+<div class="header-m"></div>
+<div class="middle"></div>
+<div class="row">
+    <div class="wrapper">
+        <nav class="nav col">
+            <ul class="menu">
+                <li class="menu-item">
+                    <a [routerLink]="'info'" [routerLinkActive]="'active'" class="menu-link">Особисті дані</a>
+                </li>
+                <li class="menu-item">
+                    <a [routerLink]="'history'" [routerLinkActive]="'active'" class="menu-link">Історія замовлень</a>
+                </li>
+                <li class="menu-item">
+                    <a [routerLink]="'password'" [routerLinkActive]="'active'" class="menu-link">Зміна паролю</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="content col">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+<div class="large"></div>

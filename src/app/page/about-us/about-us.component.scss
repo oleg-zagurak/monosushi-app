@@ -1,0 +1,339 @@
+@import '../../shared/styles/variables';
+
+.container {
+    width: 100%;
+    max-width: 1750px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0 auto;
+
+    & .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+
+    & .col {
+        flex: 0 0 83.333333%;
+        max-width: 83.333333%;
+    }
+
+    & .col-7 {
+        flex: 0 0 58.333333%;
+        max-width: 58.333333%;
+        position: relative;
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    & .col-4 {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+        position: relative;
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    & .col-9 {
+        -ms-flex: 0 0 75%;
+        -webkit-box-flex: 0;
+        flex: 0 0 75%;
+        max-width: 75%;
+        position: relative;
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    & strong,
+    & h3 {
+        font-weight: bold;
+        color: $sec-color;
+    }
+}
+
+.simple-page {
+    position: relative;
+
+    &>* {
+        margin-bottom: 25px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    & .simple-page p {
+        position: relative;
+        font-size: 18px;
+        line-height: 1.5em;
+        font-weight: 400;
+        color: $main-color;
+    }
+
+    & ul li,
+    & ol li {
+        position: relative;
+        font-size: 18px;
+        line-height: 1.47em;
+        padding-left: 24px;
+
+        &+li {
+            margin-top: 8px;
+        }
+    }
+
+    & ul li::before {
+        width: 11px;
+        height: 11px;
+        position: absolute;
+        left: 0;
+        top: 9px;
+        border-radius: 100%;
+        background: $main-bg-color;
+        content: "";
+    }
+
+    & ul li::after {
+        width: 9px;
+        height: 9px;
+        position: absolute;
+        left: 1px;
+        top: 10px;
+        border-radius: 100%;
+        border: 2px solid #fff;
+        background: $tp-bg-color;
+        content: "";
+    }
+}
+
+.col-7 {
+    flex: 0 0 58.333333%;
+    max-width: 58.333333%;
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.center-info {
+    margin: 60px 0 40px;
+    color: $sec-color;
+    font-weight: bold;
+}
+
+.block-img {
+    border-radius: 10px;
+    overflow: hidden;
+
+    & img {
+        width: 100%;
+        display: block;
+    }
+}
+
+.swiper-entry {
+    position: relative;
+}
+
+.swiper-container {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+}
+
+@media(max-width: 1415px){
+    .swiper-container{
+        overflow: visible;
+    }
+}
+.swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    transition-property: transform;
+    box-sizing: content-box;
+}
+
+.products_swiper .swiper-slide {
+    height: 100%;
+}
+
+.advantages-item {
+    text-align: center;
+    max-width: 240px;
+    margin: 0 auto;
+}
+
+.advantages-item-img {
+    width: 85px;
+    height: 85px;
+    border-radius: 10px;
+    background: $main-bg-color;
+    position: relative;
+    margin: 30px auto 20px;
+}
+
+.advantages-item-img img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.text-cut-5 {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.swiper-entry.slider-advantages.products_swiper .swiper-wrapper .swiper-slide+.swiper-slide::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -15px;
+    width: 1px;
+    height: 100%;
+    background: #dcdcdc;
+}
+
+.accordion {
+    position: relative;
+    z-index: 1;
+
+    & .accordion-item {
+        position: relative;
+        border-bottom: 1px solid #dcdcdc;
+
+        &:first-child {
+            border-top: 1px solid #dcdcdc;
+        }
+
+        &.active {
+            padding-bottom: 24px;
+            color: #252525;
+        }
+    }
+
+    & .accordion-title {
+        position: relative;
+        font-size: 20px;
+        line-height: 1.2em;
+        font-weight: 700;
+        color: $main-color;
+        padding: 32px 20px 37px 0;
+        cursor: pointer;
+        -webkit-transition: 0.35s;
+        transition: 0.35s;
+
+        &::before {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 40px;
+            width: 8px;
+            height: 8px;
+            border-left: 2px solid $main-color;
+            border-bottom: 2px solid $main-color;
+            transform: rotate(-45deg);
+            transition: 0.35s;
+        }
+
+        &:hover {
+            color: $sec-color;
+            cursor: pointer;
+        }
+
+        &.active {
+            padding-bottom: 24px;
+            color: #252525;
+        }
+    }
+
+    & .inner-wrapper {
+        transition: height 0.35s;
+        height: 0;
+        overflow: hidden;
+    }
+
+    & .accordion-inner {
+        padding: 0 30px 25px 0;
+
+        & .article ul,
+        & .article ol {
+            margin-bottom: 20px;
+            
+        }
+
+        & .text {
+            font-size: 18px;
+            line-height: 1.5em;
+        }
+
+        & .text>*,
+        & .article>* {
+            margin-bottom: 20px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        & .article ol {
+            counter-reset: number;
+
+            & li {
+                padding-left: 34px;
+                position: relative;
+
+                &+li {
+                    margin-top: 23px;
+                }
+
+                &::before {
+                    position: absolute;
+                    left: 0;
+                    top: 6px;
+                    counter-increment: number;
+                    content: "0" counter(number);
+                    font-size: 12px;
+                    line-height: 1.47em;
+                    color: $main-color;
+                    font-weight: bold;
+                    margin-right: 17px;
+                }
+            }
+        }
+    }
+
+    & .accordion-item:hover .accordion-title::before {
+        border-color: $main-bg-color;
+    }
+}
+
+.order-1 {
+    -ms-flex-order: 1;
+    -webkit-box-ordinal-group: 2;
+    order: 1;
+}
+
+.center {
+    text-align: center;
+}
+
+.align {
+    align-self: center;
+}

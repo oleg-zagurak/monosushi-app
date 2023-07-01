@@ -1,0 +1,21 @@
+static
+    header
+    footer
+
+main
+monosushi.com.ua
+    / home page
+        /actions actions page
+        /action/:name action-info page
+        /dostavka-ta-oplata delivery page
+        /about-us about-us page
+        /product-category/roli roli page
+        /product-category/setu setu page
+        /product-category/napoyi napoyi page
+        /product-category/sousi sousi page
+        /product/:name product-info page
+    /admin admin page
+        /actions admin-actions page
+        /category admin-category page
+        /products admin-products page
+        /orders admin-orders page

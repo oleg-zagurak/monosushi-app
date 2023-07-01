@@ -1,0 +1,56 @@
+<div class="form-wrapper">
+    <div class="form-btn-block">
+        <button class="form-btn" (click)="show()" [disabled]="editable">{{formOpened ? 'Закрити' : 'Додати категорію'}}</button>
+    </div>
+    <div class="form" [ngClass]="formOpened ? 'open' : ''">
+        <form [formGroup]="categoriesForm">
+            <div class="row">
+                <input type="text" formControlName="name" name="name" placeholder="*Назва">
+                <input type="text" formControlName="path" name="path" placeholder="*Шлях">
+            </div>
+            <div class="row">
+                <ng-container *ngIf="!isUploaded">
+                    <div class="file-block">
+                        <input type="file" name="image" (change)="upload($event)" accept="image/*">
+                        <div class="progress" [style.width.%]="progress"></div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="isUploaded">
+                    <div class="preview">
+                        <img [src]="getByControl('imagePath')" alt="">
+                        <button type="button" class="btn" (click)="deleteImg()">Видалити</button>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="row">
+                <input type="hidden" name="imagePath" formControlName="imagePath">
+                <button *ngIf="!editable" type="button" class="submit-btn" [disabled]="categoriesForm.invalid" (click)="addCategory()">Додати</button>
+                <button *ngIf="editable" type="button" class="submit-btn" [disabled]="categoriesForm.invalid" (click)="update()">Зберегти</button>
+            </div>
+        </form>
+    </div>
+</div>
+<table id="table">
+    <col style="width: 10%">
+    <col style="width: 30%">
+    <col style="width: 40%">
+    <col style="width: 10%">
+    <col style="width: 10%">
+    <tr class="thead">
+        <th>№</th>
+        <th>Назва</th>
+        <th>Шлях</th>
+        <th>Картинка</th>
+        <th>Дії</th>
+    </tr>
+    <tr *ngFor="let category of categories; let i = index">
+        <td>№ {{i + 1}}</td>
+        <td>{{category?.name}}</td>
+        <td>{{category?.path}}</td>
+        <td><img class="img" [src]="category?.imagePath" alt=""></td>
+        <td>
+            <button class="btn" (click)="editCategory(i)">Редагувати</button>
+            <button class="btn" (click)="deleteCategory(category.id)" [disabled]="editable">Видалити</button>
+        </td>
+    </tr>
+</table>

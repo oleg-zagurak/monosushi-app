@@ -1,0 +1,171 @@
+@import '../../shared/styles/variables';
+
+.center-info {
+    margin: 60px auto;
+    max-width: 550px;
+    text-align: center;
+
+    & .title {
+        position: relative;
+        display: inline-block;
+        padding-top: 10px;
+        color: $sec-color;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: 10px;
+            width: 100%;
+            height: 5px;
+            background: $main-bg-color;
+        }
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: 1750px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0 auto;
+
+    & .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+        justify-content: center;
+    }
+
+    & .col {
+        flex: 0 0 83.333333%;
+        max-width: 83.333333%;
+    }
+
+    & .col-3 {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+        position: relative;
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    & .col-9 {
+        flex: 0 0 75%;
+        max-width: 75%;
+    }
+
+    & .title {
+        color: $sec-color;
+        font-weight: bold;
+
+        &.center {
+            text-align: center;
+        }
+    }
+
+    & #title {
+        margin: 90px 0 40px;
+    }
+}
+
+.delivery-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & .delivery-info-img {
+        margin-right: 10px;
+        max-width: 276px;
+
+        & img {
+            width: 100%;
+        }
+    }
+
+    & .delivery-info-text {
+        max-width: 270px;
+        text-align: center;
+
+        & .title {
+            margin-bottom: 10px;
+            letter-spacing: .07em;
+        }
+
+        & .text {
+            font-size: 14px;
+            line-height: 1.6em;
+        }
+
+        & .text p+p {
+            margin-top: 10px;
+        }
+    }
+}
+
+.delivery-info.green .title,
+.delivery-info.green span {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.delivery-info.yellow {
+    position: relative;
+}
+
+.delivery-info.yellow .title,
+.delivery-info.yellow span {
+    color: #f2c94c;
+    font-weight: bold;
+}
+
+.delivery-info.red .title,
+.delivery-info.red span {
+    color: #FF0000;
+    font-weight: bold;
+}
+
+.pai-info {
+    justify-content: center;
+    margin-bottom: 90px;
+
+    & .pay-info-item {
+        position: relative;
+        display: flex;
+        max-width: 427px;
+    }
+
+    & .pay-info-img {
+        max-width: 63px;
+        width: 100%;
+        height: 60px;
+        border-radius: 10px;
+        background: $main-bg-color;
+        position: relative;
+        margin-right: 20px;
+
+        & img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    & .pay-info-text .title {
+        line-height: 1.1em;
+        margin: 15px 0;
+    }
+
+    & .text-sm {
+        font-size: 16px;
+        line-height: 1.6em;
+    }
+}
+
+.text-md {
+    margin-bottom: 90px;
+}

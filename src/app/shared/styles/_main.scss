@@ -1,0 +1,134 @@
+@import url('https://fonts.cdnfonts.com/css/rotondac');
+
+@import './reset';
+@import './variables';
+
+
+
+
+
+body {
+    font-family: $main-ff;
+    color: $main-color;
+    font-size: 18px;
+    line-height: 1.5em;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    -webkit-transition: .35s;
+    transition: .35s;
+}
+
+h3 {
+    font-size: 34px;
+    line-height: 1.4em;
+    font-weight: bold;
+    color: $sec-color;
+}
+
+h2, .h2 {
+    font-size: 42px;
+    line-height: 1.2em;
+    font-weight: bold;
+    color: $sec-color;
+}
+
+h4, .h4 {
+    font-size: 26px;
+    line-height: 1.2em;
+    font-weight: bold;
+    color: $sec-color;
+}
+
+h5, .h5 {
+    font-size: 20px;
+    line-height: 1.75em;
+    font-weight: bold;
+    color: $sec-color;
+}
+
+b, strong {
+    font-weight: bold;
+    color: $sec-color;
+}
+
+:focus, :hover, :active, :visited {
+    outline: none;
+}
+::selection{
+    color: $default-bg-color;
+    background-color: $main-bg-color;
+}
+
+.swiper-pagination-bullet{
+    background-color: $main-bg-color;
+    width: 12px;
+    height: 12px;
+    &-active{
+    background-color: #5099db;
+    }
+}
+.swiper-slide .slide{
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+.swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
+.swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet{
+    margin: 0 20px;
+}
+.swiper-pagination-horizontal.swiper-pagination-bullets{
+    bottom: 30px;
+}
+.swiper{
+    padding: 40px 0 80px;
+}
+
+html::-webkit-scrollbar, html *::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+html::-webkit-scrollbar-thumb, html *::-webkit-scrollbar-thumb {
+    background: $main-bg-color;
+}
+html::-webkit-scrollbar-track, html *::-webkit-scrollbar-track {
+    background: $default-bg-color;
+}
+
+.header-m{
+    width: 100%;
+    height: 110px;
+}
+
+.large {
+    height: 120px;
+}
+
+.spacer-md {
+    height: 40px;
+}
+
+.middle {
+    height: 90px;
+}
+
+@media (max-width: 1599px) {
+    .header-m{
+        height: 95px;
+    }
+}
+
+@media (max-width: 1199px) {
+    .header-m{
+        height: 60px;
+    }
+    .footer-m{
+        width: 100%;
+        height: 60px;
+    }
+}

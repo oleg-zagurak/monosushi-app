@@ -1,0 +1,186 @@
+@import '../../shared/styles/variables';
+
+footer {
+    border-top: 4px solid $main-bg-color;
+    margin-top: auto;
+
+    & .footer-inner {
+        max-width: 1920px;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    & .footer-top {
+        margin: 0 35px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+    }
+
+    & .logo {
+        max-width: 136px;
+
+        & img {
+            display: block;
+            width: 100%;
+        }
+    }
+
+}
+
+.menu-list {
+    display: flex;
+
+    & a {
+        font-size: 16px;
+        line-height: 1em;
+        color: $sec-color;
+        transition: 0.35s;
+
+        &:hover {
+            color: $main-bg-color;
+        }
+    }
+
+    & li+li {
+        margin-left: 55px;
+    }
+}
+
+.footer-info {
+    display: flex;
+    justify-content: space-between;
+    max-width: 43%;
+    width: 100%;
+    line-height: 1.25em;
+
+    &>* {
+        font-size: 14px;
+        color: $main-color;
+        text-align: center;
+    }
+
+    & a:hover {
+        color: $main-bg-color;
+    }
+}
+
+.footer-bottom {
+    margin: 0 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    & .copyright {
+        font-size: 14px;
+        color: $main-color;
+        white-space: nowrap;
+
+        & .copyright p {
+            display: inline-block;
+            margin-right: 40px;
+        }
+    }
+
+    & .pay-cards {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & .pay-card-item {
+            position: relative;
+            width: 69px;
+            height: 39px;
+            border: 1px solid #dcdcdc;
+            border-radius: 5px;
+            display: inline-block;
+
+            & img {
+                max-width: 45px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            &+.pay-card-item {
+                margin-left: 5px;
+            }
+
+        }
+    }
+
+    & .social {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & span {
+            margin-right: 20px;
+            font-size: 14px;
+            color: $sec-color;
+        }
+
+        & ul {
+            display: flex;
+
+            & .icon-btn {
+                display: block;
+                width: 49px;
+                height: 49px;
+                background: $main-bg-color;
+                border: 2px solid $main-bg-color;
+                border-radius: 10px;
+                position: relative;
+                transition: 0.35s;
+
+                &:hover {
+                    background-color: $tp-bg-color;
+                }
+
+                & img {
+                    width: 18px;
+                    height: 18px;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+
+            & li+li {
+                margin-left: 5px;
+            }
+        }
+    }
+
+    & a.footer-dev-logo {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: 0.35s;
+
+    &::before {
+        background: #ffffff url(https://monosushi.com.ua/wp-content/themes/monosushi/img/redstone-icon-black.svg);
+        background-repeat: no-repeat;
+        width: 75px;
+        background-position: right center;
+        background-size: 100%;
+        content: '';
+        right: 0px;
+        top: 0px;
+        position: absolute;
+        height: 100%;
+    }
+
+    & span {
+        margin-right: 15px;
+        font-size: 14px;
+        font-weight: 400;
+        transition: 0.35s;
+    }
+}
+}
