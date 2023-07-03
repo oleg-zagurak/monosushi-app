@@ -16,19 +16,21 @@ export class ProductInfoComponent {
   constructor(private ActivatedRoute: ActivatedRoute,
     private orders: OrdersService) { }
   ngOnInit(): void {
-    const subscription = this.ActivatedRoute.data.subscribe({
-      next: ({product}) => {
-        this.product = product;
-      },
-      error: e => {
-        console.error(e);
-      },
-      complete: () => {
-        subscription.unsubscribe();
-      }
-    });
-    if(this.product){
-      if(this.product.category.subcategory){
+    if (!this.product) {
+      const subscription = this.ActivatedRoute.data.subscribe({
+        next: ({ product }) => {
+          this.product = product;
+        },
+        error: e => {
+          console.error(e);
+        },
+        complete: () => {
+          subscription.unsubscribe();
+        }
+      });
+    }
+    if (this.product) {
+      if (this.product.category.subcategory) {
         this.sub = true;
         let name = this.product.category.subcategory;
         this.subName = SubCategories[name];
@@ -36,16 +38,16 @@ export class ProductInfoComponent {
     }
   }
 
-  setAmount(sign: boolean): void{
-    if(sign){
+  setAmount(sign: boolean): void {
+    if (sign) {
       ++this.product.count;
-    } else if(!sign && this.product.count > 1) {
+    } else if (!sign && this.product.count > 1) {
       --this.product.count;
     }
   }
 
-  addOrder(): void{
+  addOrder(): void {
     this.orders.add(this.product);
   }
-  
+
 }

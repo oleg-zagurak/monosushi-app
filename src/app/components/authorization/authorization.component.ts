@@ -13,7 +13,7 @@ export class AuthorizationComponent {
   public state = false;
   public isLogged = false;
   public isAdmin = false;
-  constructor(private dialog: MatDialog,
+  constructor(public dialog: MatDialog,
     private auth: AuthService,
     private router: Router) { }
     
@@ -23,7 +23,7 @@ export class AuthorizationComponent {
         this.closeOnNavigate();
       }
     })
-    this.auth.authSubject.subscribe((mode: boolean) => {
+    this.auth.authSubject?.subscribe((mode: boolean) => {
       if (mode) {
         this.isAdmin = this.auth.isAdmin;
         this.isLogged = this.auth.isLogged;

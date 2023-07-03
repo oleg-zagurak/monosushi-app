@@ -22,6 +22,7 @@ export class ProductCategoryComponent {
   constructor(private db: DbDataService,
     private orders: OrdersService,
     private activatedRoute: ActivatedRoute) {
+      
     this.db.API = environment.API.products;
     this.paramSubscription = activatedRoute.params.subscribe({
       next: (param) => {
@@ -87,7 +88,7 @@ export class ProductCategoryComponent {
     })
   }
 
-  setAmount(sign: boolean, product: IProduct): void {
+  setAmount(sign: boolean, product: IProduct | {count: number}): void {
     if (sign) {
       ++product.count;
     } else if (!sign && product.count > 1) {

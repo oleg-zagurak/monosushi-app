@@ -18,7 +18,7 @@ export class DbDataService {
   getAll<T>(apiPath?: string): Observable<T[]>{
     let path = this.api.key;
     if(apiPath) path = this.URL + apiPath;
-    
+
     return this.http.get<T[]>(path);
   }
   getOne<T>(id: number): Observable<T>{

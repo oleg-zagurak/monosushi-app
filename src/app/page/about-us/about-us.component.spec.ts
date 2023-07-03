@@ -18,4 +18,21 @@ describe('AboutUsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should toggle accordion state and set height of the item', () => {
+    const index = 0;
+    const item = document.createElement('div');
+    item.dataset['index'] = index.toString();
+    spyOnProperty(item, 'scrollHeight', 'get').and.returnValue(200);
+    
+    component.open(item);
+
+    expect(component.acardion[index]).toBe(true);
+    expect(item.style.height).toBe('200px');
+
+    component.open(item);
+
+    expect(component.acardion[index]).toBe(false);
+    expect(item.style.height).toBe('0px');
+  });
 });

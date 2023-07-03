@@ -159,7 +159,7 @@ export class AdminActionsComponent {
   show(): void {
     if (!this.editable) this.formOpened = !this.formOpened;
   }
-  private reset(): void {
+  reset(): void {
     this.actionsForm.reset();
     this.formOpened = false;
     this.isUploaded = false;
@@ -167,7 +167,7 @@ export class AdminActionsComponent {
     this.currentId = 0;
     this.editable = false;
   }
-  private createDate(): string {
+  createDate(): string {
     let date = new Date();
     let dateStr = '';
     date.getDate() < 10 ? dateStr += '0' + date.getDate() : dateStr += date.getDate();

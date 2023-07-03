@@ -28,7 +28,7 @@ export class AdminAuthComponent {
   
   loginUser(): void {
     const { email, password } = this.loginForm.value;
-    if (email && password && this.loginForm.valid) {
+    if (this.loginForm.valid) {
       this.disabledOnLoad = true;
       this.auth.login(email, password)
         .catch((e) => {

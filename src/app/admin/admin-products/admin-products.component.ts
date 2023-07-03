@@ -37,7 +37,7 @@ export class AdminProductsComponent {
     if(this.progress !== this.uploadImage.percentage) this.progress = this.uploadImage.percentage;
   }
 
-  private initForm(): void {
+  initForm(): void {
     this.productForm = this.fb.group({
       subcategory: [null],
       name: [null, Validators.required],

@@ -12,7 +12,7 @@ export class BasketDialogComponent {
   public orders: IProduct[] = [];
   public totalPrice = 0;
   public totalCount = 0;
-  private changesDetect: boolean = false;
+  public changesDetect: boolean = false;
   private subscription!: Subscription;
   constructor(private ordersService: OrdersService) { }
   ngOnInit(): void {
@@ -43,7 +43,7 @@ export class BasketDialogComponent {
     this.ordersService.delete(id);
   }
 
-  setAmount(sign: boolean, product: IProduct): void {
+  setAmount(sign: boolean, product: IProduct | {count: number}): void {
     this.changesDetect = true;
     if (sign) {
       ++product.count;
@@ -54,7 +54,7 @@ export class BasketDialogComponent {
     this.saveChanges();
   }
 
-  private saveChanges(): void {
+  saveChanges(): void {
     if (this.changesDetect) {
       this.ordersService.save(this.orders);
       this.changesDetect = false;

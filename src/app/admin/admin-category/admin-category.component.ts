@@ -34,7 +34,7 @@ export class AdminCategoryComponent {
     if(this.progress !== this.uploadImage.percentage) this.progress = this.uploadImage.percentage;
   }
 
-  private initForm(): void {
+  initForm(): void {
     this.categoriesForm = this.fb.group({
       name: [null, Validators.required],
       path: [null, Validators.required],
@@ -154,7 +154,7 @@ export class AdminCategoryComponent {
   show(): void{
     if(!this.editable) this.formOpened = !this.formOpened;
   }
-  private reset(): void {
+  reset(): void {
     this.categoriesForm.reset();
     this.formOpened = false;
     this.isUploaded = false;

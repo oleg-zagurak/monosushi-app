@@ -24,8 +24,10 @@
             </div>
             <div class="row">
                 <input type="hidden" name="imagePath" formControlName="imagePath">
-                <button *ngIf="!editable" type="button" class="submit-btn" [disabled]="categoriesForm.invalid" (click)="addCategory()">Додати</button>
-                <button *ngIf="editable" type="button" class="submit-btn" [disabled]="categoriesForm.invalid" (click)="update()">Зберегти</button>
+                <button *ngIf="!editable" type="button" id="first-submit" class="submit-btn"
+                    [disabled]="categoriesForm.invalid" (click)="addCategory()">Додати</button>
+                <button *ngIf="editable" type="button" class="submit-btn" [disabled]="categoriesForm.invalid"
+                    (click)="update()">Зберегти</button>
             </div>
         </form>
     </div>

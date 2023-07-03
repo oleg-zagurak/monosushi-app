@@ -16,7 +16,7 @@ export class HeaderBasketComponent {
   public totalPrice = 0;
   public totalCount = 0;
   public dialogRef!: MatDialogRef<BasketDialogComponent>;
-  constructor(private ordersService: OrdersService, private router: Router, private dialog: MatDialog) { }
+  constructor(private ordersService: OrdersService, private router: Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.loadBasket();
