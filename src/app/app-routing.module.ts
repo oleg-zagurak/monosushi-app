@@ -1,53 +1,57 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 
 import { HomeComponent } from './page/home/home.component';
-import { ActionsComponent } from './page/actions/actions.component';
 import { DeliveryComponent } from './page/delivery/delivery.component';
-import { AboutUsComponent } from './page/about-us/about-us.component';
 import { ProductCategoryComponent } from './page/product-category/product-category.component';
-import { AdminComponent } from './page/admin/admin/admin.component';
-import { AdminActionsComponent } from './page/admin/admin-actions/admin-actions.component';
-import { AdminCategoryComponent } from './page/admin/admin-category/admin-category.component';
-import { AdminProductsComponent } from './page/admin/admin-products/admin-products.component';
-import { AdminOrdersComponent } from './page/admin/admin-orders/admin-orders.component';
-import { ActionInfoComponent } from './page/action-info/action-info.component';
-import { ProductInfoComponent } from './page/product-info/product-info.component';
-import { productResolver } from './shared/services/resolvers/product/product.resolver';
-import { actionResolver } from './shared/services/resolvers/action/action.resolver';
-import { KabinetComponent } from './page/kabinet/kabinet/kabinet.component';
-import { HistoryComponent } from './page/kabinet/history/history.component';
-import { PasswordComponent } from './page/kabinet/password/password.component';
-import { UserInfoComponent } from './page/kabinet/user-info/user-info.component';
-import { OfertaComponent } from './page/oferta/oferta.component';
 import { authAccessGuard } from './shared/guards/auth-access.guard';
-import { AdminAuthComponent } from './page/admin-auth/admin-auth.component';
-
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'actions', component: ActionsComponent},
-  {path: 'action/:id', component: ActionInfoComponent, resolve: {action: actionResolver}},
-  {path: 'dostavka-ta-oplata', component: DeliveryComponent},
-  {path: 'about-us', component: AboutUsComponent},
-  {path: 'dogovir-oferta', component: OfertaComponent},
-  {path: 'product-category/:category', component: ProductCategoryComponent},
-  {path: 'product-category/:category/:subcategory', component: ProductCategoryComponent},
-  {path: 'product/:id', component: ProductInfoComponent, resolve:{product: productResolver}},
-  {path: 'kabinet', component: KabinetComponent, canActivate: [authAccessGuard], children: [
-    {path: 'info', component: UserInfoComponent},
-    {path: 'history', component: HistoryComponent},
-    {path: 'password', component: PasswordComponent},
-    {path: '', pathMatch: 'full', redirectTo: 'info'},
-  ]},
-  {path: 'auth', component: AdminAuthComponent},
-  {path: 'admin', component: AdminComponent, canActivate: [authAccessGuard], children: [
-    {path: 'actions', component: AdminActionsComponent},
-    {path: 'categories', component: AdminCategoryComponent},
-    {path: 'products', component: AdminProductsComponent},
-    {path: 'orders', component: AdminOrdersComponent},
-    {path: '', pathMatch: 'full', redirectTo: 'actions'},
-  ]},
+  {
+    path: 'actions',
+    loadChildren: () => import('./page/actions/actions.module').then(m => m.ActionsModule)
+  },
+  {
+    path: 'action',
+    loadChildren: () => import('./page/action-info/action-info.module').then(m => m.ActionInfoModule)
+  },
+  {
+    path: 'checkout',
+    loadChildren: () => import('./page/order/order.module').then(m => m.OrderModule)
+  },
+  {
+    path: 'dostavka-ta-oplata',
+    loadChildren: () => import('./page/delivery/delivery.module').then(m => m.DeliveryModule)
+  },
+  {
+    path: 'about-us',
+    loadChildren: () => import('./page/about-us/about-us.module').then(m => m.AboutUsModule)
+  },
+  {
+    path: 'dogovir-oferta',
+    loadChildren: () => import('./page/oferta/oferta.module').then(m => m.OfertaModule)
+  },
+  {path: 'product-category', children: [
+      {path: ':category', component: ProductCategoryComponent},
+      {path: ':category/:subcategory', component: ProductCategoryComponent}
+    ]},
+  {
+    path: 'product',
+    loadChildren: () => import('./page/product-info/product-info.module').then(m => m.ProductInfoModule)
+  },
+  {
+    path: 'kabinet', canActivate: [authAccessGuard],
+    loadChildren: () => import('./page/kabinet/kabinet.module').then(m => m.KabinetModule)
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./page/admin-auth/admin-auth.module').then(m => m.AdminAuthModule)
+  },
+  {
+    path: 'admin', canActivate: [authAccessGuard],
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+  },
   {path: 'logout', pathMatch: 'full', redirectTo: ''},
   {path: '**', pathMatch: 'full', redirectTo: ''},
 ];
@@ -56,6 +60,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, {
     scrollPositionRestoration: "enabled",
     scrollOffset: [0, 0],
+    preloadingStrategy: PreloadAllModules
   })],
   exports: [RouterModule]
 })

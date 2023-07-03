@@ -1,0 +1,406 @@
+<div class="header-m"></div>
+<section class="checkout-section ">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-6 col-lg-10 col-12">
+        <div class="spacer-md"></div>
+        <div class="center-info">
+          <div class="h2 title text-center">
+            Оформити замовлення </div>
+        </div>
+        <form novalidate="" id="checkout-form" class="form delivery-form">
+          <div class="form-group">
+            <div class="checkout-products">
+              <div class="prod_horiz cart-product js-product  " data-price="267"
+                   data-key="d490d7b4576290fa60eb31b5fc917ad1" data-things="1">
+                <a class="prod_horiz-img"
+                   href="https://monosushi.com.ua/product/filadelfiya-z-lososem/">
+                  <img class="img"
+                       src="https://monosushi.com.ua/wp-content/uploads/2020/11/1.-filadelfiya-z-lososem-122x50.jpg.pagespeed.ce.lgHOCenxAP.jpg"
+                       oncontextmenu="return false">
+                </a>
+                <div class="prod_horiz-desc">
+                  <a class="title" href="https://monosushi.com.ua/product/filadelfiya-z-lososem/">
+                    Філадельфія з лососем </a>
+                  <div class="prod_horiz-controls">
+                    <div class="thumb-input-number">
+                      <button type="button" class="decrement in-cart"
+                              data-key="d490d7b4576290fa60eb31b5fc917ad1">-</button>
+                      <input class="product-qty" value="1" readonly="" tabindex="-1" max="999"
+                             data-id="600" data-key="d490d7b4576290fa60eb31b5fc917ad1">
+                      <button type="button" class="increment in-cart"
+                              data-key="d490d7b4576290fa60eb31b5fc917ad1">+</button>
+                    </div>
+                    <div class="price_default">
+                      <b class="price">267</b>
+                      грн
+                    </div>
+                    <button type="button" class="btn-close remove-product"
+                            data-key="d490d7b4576290fa60eb31b5fc917ad1">
+                      <div class="trash"></div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="price-wrapp all-product-price all_price text-right" style="display: none">
+              <span><b class="all-product-price-el-all">267</b> грн</span>
+            </div>
+            <div class="price-wrapp text-right">
+              До оплати: <span><b class="all-product-price-el" data-total="267">267</b>
+                                грн</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row form-group-row">
+              <div class="col-md-6">
+                <div class="input-button">
+                  <input type="text" class="input m-0" placeholder="Введіть промокод">
+                  <button type="button" class="btn btn-primary" id="apply-coupon">
+                    Застосувати </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group user-form">
+            <div class="form-title title">
+              <i class="number-title"><b>1</b></i>
+              <h5>
+                Оберіть кількість приборів </h5>
+            </div>
+            <div class="row form-group-row">
+              <div class="col-sm-6">
+                <div class="select-mat">
+                  <mat-form-field>
+                    <mat-select [value]="1">
+                      <mat-option [value]="1">1</mat-option>
+                      <mat-option [value]="2">2</mat-option>
+                      <mat-option [value]="3">3</mat-option>
+                      <mat-option [value]="4">4</mat-option>
+                      <mat-option [value]="5">5</mat-option>
+                      <mat-option [value]="6">6 +15 грн </mat-option>
+                      <mat-option [value]="7">7 +30 грн </mat-option>
+                      <mat-option [value]="8">8 +45 грн </mat-option>
+                      <mat-option [value]="9">9 +60 грн </mat-option>
+                      <mat-option [value]="10">10 +75 грн </mat-option>
+                      <mat-option [value]="11">11 +90 грн </mat-option>
+                      <mat-option [value]="12">12 +105 грн </mat-option>
+                      <mat-option [value]="13">13 +120 грн </mat-option>
+                      <mat-option [value]="14">14 +135 грн </mat-option>
+                      <mat-option [value]="15">15 +150 грн </mat-option>
+                      <mat-option [value]="16">16 +165 грн </mat-option>
+                      <mat-option [value]="17">17 +180 грн </mat-option>
+                      <mat-option [value]="18">18 +195 грн </mat-option>
+                      <mat-option [value]="19">19 +210 грн </mat-option>
+                      <mat-option [value]="20">20 +225 грн </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-sm-6 count_things_study_wrapper">
+                <div class="select-mat">
+                  <mat-form-field>
+                    <mat-select [value]="'Навчальні тримачі'">
+                      <mat-option selected="" disabled="" value="Навчальні тримачі">Навчальні
+                        тримачі</mat-option>
+                      <mat-option value="0">0</mat-option>
+                      <mat-option value="1">1</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="h5 form-title title">
+              <i class="number-title"><b>2</b></i>
+              <h5>
+                Спосіб оплати </h5>
+            </div>
+            <div class="checkbox-entry-wrap payment-entry-wrap payment_method_cod">
+              <label class="checkbox-entry">
+                <input type="radio" id="payment_method_cod" class="toggle-block-control" data-block="2"
+                       data-rel="cod" name="payment_method" checked="" value="cod">
+                <span>Оплата готівкою</span>
+              </label>
+            </div>
+            <div class="checkbox-entry-wrap payment-entry-wrap payment_method_liqpay">
+              <label class="checkbox-entry">
+                <input type="radio" id="payment_method_liqpay" class="toggle-block-control"
+                       data-block="2" data-rel="liqpay" name="payment_method" value="liqpay">
+                <span>Безготівкова оплата</span>
+              </label>
+            </div>
+            <div class="prod_horiz type2 js-checkout-product things" style="display: none !important;"
+                 data-price="15">
+              <div class="prod_horiz-desc">
+                <div class="thumb-input-number">
+                  <button type="button" class="decrement">-</button>
+                  <input id="things-count" class="product-qty" value="0" readonly="" tabindex="-1"
+                         data-min="0">
+                  <button type="button" class="increment">+</button>
+                </div>
+                <div class="price-wrap">
+                  <b class="price">0</b>
+                  грн
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group delivery-form-group">
+            <div class="h5 form-title title">
+              <i class="number-title"><b>3</b></i>
+              <h5>
+                Спосіб доставки </h5>
+            </div>
+            <div class="checkbox-entry-wrap">
+              <label class="checkbox-entry">
+                <input id="driveDelivery" type="radio" name="delivery_method"
+                       class="toggle-block-control" data-min-amount="" data-discount-percent=""
+                       data-surprice="" data-block="1" data-rel="4" data-checked="courier"
+                       data-method="courier" checked="" value="courier">
+                <span>
+                                    Доставка (У зв’язку із відключенням світла, якщо ліфт не працює кур’єр піднімається
+                                    тільки до п’ятого поверху. Дякуємо за розуміння) </span>
+              </label>
+            </div>
+            <div class="checkbox-entry-wrap">
+              <label class="checkbox-entry">
+                <input id="driveDelivery" type="radio" name="delivery_method"
+                       class="toggle-block-control" data-min-amount="" data-discount-percent=""
+                       data-surprice="&quot;Запечені моно макі з лососем&quot; в подарунок" data-block="1"
+                       data-rel="1" data-checked="courier" data-method="local_pickup" value="local_pickup">
+                <span>
+                                    Самовивіз ( <b>"Запечені моно макі з лососем" в подарунок</b> )
+                                </span>
+              </label>
+            </div>
+            <div class="checkbox-entry-wrap toggle-block" data-rel="4">
+              <label class="checkbox-entry">
+                <input type="checkbox" class="toggle-block-control" data-block="4" checked=""
+                       data-rel="1" name="at_time" value="at_time">
+                <span>
+                                    Заздалегідь </span>
+              </label>
+            </div>
+            <div class="toggle-blocks mob-mt-30">
+              <div class="toggle-block" data-rel="4" style="display: block;">
+                <div class="spacer-xs dn-mobile"></div>
+                <div class="row form-group-row">
+                  <div class="col-12 col-md-6">
+                    <input type="text" name="first_name" class="input" placeholder="Вашe ім’я*"
+                           value="" required="">
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <input class="input inputmask user-phone" name="phone" type="text" value=""
+                           placeholder="Телефон*" inputmode="numeric" required="">
+                  </div>
+                </div>
+                <div class="toggle-block local_visible" data-block="4" data-rel="1"
+                     style="display:block" data-min-time="00.30.00">
+                  <div class="spacer-xs"></div>
+                  <div class="row form-group-row">
+                    <div class="col-sm-6">
+                      <div class="datepicker">
+                        <mat-form-field class="example-full-width">
+                          <input matInput [matDatepicker]="picker" [min]="minDate"
+                                 [max]="maxDate" placeholder="Дата доставки"
+                                 (dateInput)="addEvent('input', $event)"
+                                 (dateChange)="addEvent('change', $event)">
+                          <mat-datepicker-toggle matIconSuffix [for]="picker">
+                            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                          </mat-datepicker-toggle>
+                          <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="res-gps">
+                        <div class="select-mat">
+                          <mat-form-field>
+                            <mat-select [value]="'1'">
+                              <mat-option value="1" disabled="">
+                                Виберіть часовий інтервал </mat-option>
+                              <mat-option value="11:00 - 11:15">11:00 - 11:15</mat-option>
+                              <mat-option value="11:15 - 11:30">11:15 - 11:30</mat-option>
+                              <mat-option value="11:30 - 11:45">11:30 - 11:45</mat-option>
+                              <mat-option value="11:45 - 12:00">11:45 - 12:00</mat-option>
+                              <mat-option value="12:00 - 12:15">12:00 - 12:15</mat-option>
+                              <mat-option value="12:15 - 12:30">12:15 - 12:30</mat-option>
+                              <mat-option value="12:30 - 12:45">12:30 - 12:45</mat-option>
+                              <mat-option value="12:45 - 13:00">12:45 - 13:00</mat-option>
+                              <mat-option value="13:00 - 13:15">13:00 - 13:15</mat-option>
+                              <mat-option value="13:15 - 13:30">13:15 - 13:30</mat-option>
+                              <mat-option value="13:30 - 13:45">13:30 - 13:45</mat-option>
+                              <mat-option value="13:45 - 14:00">13:45 - 14:00</mat-option>
+                              <mat-option value="14:00 - 14:15">14:00 - 14:15</mat-option>
+                              <mat-option value="14:15 - 14:30">14:15 - 14:30</mat-option>
+                              <mat-option value="14:30 - 14:45">14:30 - 14:45</mat-option>
+                              <mat-option value="14:45 - 15:00">14:45 - 15:00</mat-option>
+                              <mat-option value="15:00 - 15:15">15:00 - 15:15</mat-option>
+                              <mat-option value="15:15 - 15:30">15:15 - 15:30</mat-option>
+                              <mat-option value="15:30 - 15:45">15:30 - 15:45</mat-option>
+                              <mat-option value="15:45 - 16:00">15:45 - 16:00</mat-option>
+                              <mat-option value="16:00 - 16:15">16:00 - 16:15</mat-option>
+                              <mat-option value="16:15 - 16:30">16:15 - 16:30</mat-option>
+                              <mat-option value="16:30 - 16:45">16:30 - 16:45</mat-option>
+                              <mat-option value="16:45 - 17:00">16:45 - 17:00</mat-option>
+                              <mat-option value="17:00 - 17:15">17:00 - 17:15</mat-option>
+                              <mat-option value="17:15 - 17:30">17:15 - 17:30</mat-option>
+                              <mat-option value="17:30 - 17:45">17:30 - 17:45</mat-option>
+                              <mat-option value="17:45 - 18:00">17:45 - 18:00</mat-option>
+                              <mat-option value="18:00 - 18:15">18:00 - 18:15</mat-option>
+                              <mat-option value="18:15 - 18:30">18:15 - 18:30</mat-option>
+                              <mat-option value="18:30 - 18:45">18:30 - 18:45</mat-option>
+                              <mat-option value="18:45 - 19:00">18:45 - 19:00</mat-option>
+                              <mat-option value="19:00 - 19:15">19:00 - 19:15</mat-option>
+                              <mat-option value="19:15 - 19:30">19:15 - 19:30</mat-option>
+                              <mat-option value="19:30 - 19:45">19:30 - 19:45</mat-option>
+                              <mat-option value="19:45 - 20:00">19:45 - 20:00</mat-option>
+                              <mat-option value="20:00 - 20:15">20:00 - 20:15</mat-option>
+                              <mat-option value="20:15 - 20:30">20:15 - 20:30</mat-option>
+                              <mat-option value="20:30 - 20:45">20:30 - 20:45</mat-option>
+                              <mat-option value="20:45 - 21:00">20:45 - 21:00</mat-option>
+                              <mat-option value="21:00 - 21:15">21:00 - 21:15</mat-option>
+                              <mat-option value="21:15 - 21:30">21:15 - 21:30</mat-option>
+                              <mat-option value="21:30 - 21:45">21:30 - 21:45</mat-option>
+                              <mat-option value="21:45 - 22:00">21:45 - 22:00</mat-option>
+                              <mat-option value="22:00 - 22:15">22:00 - 22:15</mat-option>
+                              <mat-option value="22:15 - 22:30">22:15 - 22:30</mat-option>
+                              <mat-option value="22:30 - 22:45">22:30 - 22:45</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="spacer-xs"></div>
+                <div class="row form-group-row">
+                  <div class="col-sm-12 col-12">
+                    <div class="select-mat">
+                      <mat-form-field>
+                        <mat-select [value]="'0'">
+                          <mat-option selected="" disabled="" value="0">
+                            Оберіть адресу самовивозу</mat-option>
+                          <mat-option value="1">Чорновола 95</mat-option>
+                          <mat-option value="2">Володимира Великого 10Б</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+                <div class="spacer-xs"></div>
+                <div class="row form-group-row inputs-wrap">
+                  <div class="col-12 col-sm-6">
+                    <input id="streetAutocomplete" class="input ui-autocomplete-input" type="text"
+                           placeholder="Вулиця*" name="street" value="" required="" autocomplete="off">
+                  </div>
+                  <div class="col-12 col-sm-6">
+                    <input id="houseNumber" class="input" type="text" placeholder="Номер будинку*"
+                           name="house" value="" required="" maxlength="8">
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="text" class="input" name="entrance" maxlength="6"
+                           placeholder="Під'їзд" value="">
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="number" class="input" name="flat" placeholder="Квартира" value="">
+                  </div>
+                </div>
+                <hr>
+                <div class="checkbox-entry-wrap">
+                  <label class="checkbox-entry">
+                    <input type="checkbox" name="no_call"><span>
+                                            Зателефонуйте мені для уточнення деталей </span>
+                  </label>
+                </div>
+                <div class="checkbox-entry-wrap d-block">
+                  <label class="checkbox-entry">
+                    <input type="checkbox" name="is_comment" class="toggle-block-control"
+                           data-block="3" data-rel="0"><span>
+                                            Додати коментар </span>
+                  </label>
+                </div>
+                <div class="toggle-block" data-block="3" data-rel="0">
+                  <div class="spacer-xs"></div>
+                  <textarea name="comment" class="input" placeholder="Ваш коментар"
+                            spellcheck="false"></textarea>
+                </div>
+                <div class="checkbox-entry-wrap d-block">
+                  <label class="checkbox-entry">
+                    <input type="checkbox" name="is_comment" class="toggle-block-control"
+                           data-block="3" data-rel="1"><span>
+                                            Додати коментар для кухні </span>
+                  </label>
+                </div>
+                <div class="spacer-xs"></div>
+                <div class="toggle-block" data-block="3" data-rel="1">
+                                    <textarea name="comment_kitchen" class="input" placeholder="Ваш коментар для кухні"
+                                              spellcheck="false"></textarea>
+                </div>
+                <div class="search-mobile-button" style="display:none;">
+                  <button id="StartSearch" type="button" class="btn btn-primary btn-block">
+                    Пошук адреси </button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="checkout-map"><app-map></app-map></div>
+                  <div class="order-wrap">
+                    <div class="deliveryWarning">
+                      <div class="errorMsg empty-name" style="display: block;">
+                        <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/warning.svg"
+                             alt="warning" oncontextmenu="return false">
+                        <p>Введіть ваше ім'я</p>
+                      </div>
+                      <div class="errorMsg empty-phone" style="display: block;">
+                        <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/warning.svg"
+                             alt="warning" oncontextmenu="return false">
+                        <p>Введіть ваш номер телефону</p>
+                      </div>
+                      <div class="errorMsg empty-delivery-date" style="display: block;">
+                        <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/warning.svg"
+                             alt="warning" oncontextmenu="return false">
+                        <p>Введіть дату та час доставки</p>
+                      </div>
+                      <div class="errorMsg empty-address" style="display: block;">
+                        <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/warning.svg"
+                             alt="warning" oncontextmenu="return false">
+                        <p>Введіть вашу адресу та номер будинку</p>
+                      </div>
+                      <div class="errorMsg empty-house">
+                        <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/warning.svg"
+                             alt="warning" oncontextmenu="return false">
+                        <p>Невірна адреса</p>
+                      </div>
+                      <div class="errorMsg noPriceRoll">
+                        <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/warning.svg"
+                             alt="warning" oncontextmenu="return false">
+                        <p>
+                          *Для того щоб отримати "Запечені моно макі з лососем" у подарунок,
+                          мінімальна сума
+                          замовлення повинна становити 300 грн </p>
+                      </div>
+                    </div>
+                    <div class="main-order-wrapp">
+                      <div class="text-center w-100">
+                        <button type="submit"
+                                class="btn btn-primary main-order-button">
+                          <!-- disabled -->
+                          ОФОРМИТИ ЗАМОВЛЕННЯ </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="spacer-xl"></div>
+</section>

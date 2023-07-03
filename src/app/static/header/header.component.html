@@ -78,9 +78,8 @@
                         <div class="header-work-time">Працюємо з <b>11:00</b> до <b>22:30</b></div>
                     </li>
                     <li class="secondary-call">
-                        <button class="btn btn-small open-popup" data-rel="4">
-                            <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/phone.svg" alt=""
-                                oncontextmenu="return false">
+                        <button class="btn btn-small open-popup" (click)="showCallback()">
+                            <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/phone.svg" alt="">
                             <span>МИ ЗАТЕЛЕФОНУЄМО</span>
                         </button>
                     </li>
@@ -116,7 +115,7 @@
             </ul>
         </div>
         <div class="header-call-back">
-            <button class="btn">
+            <button class="btn" (click)="showCallback()">
                 <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/phone.svg" alt="phone">
                 <span>МИ ЗАТЕЛЕФОНУЄМО</span>
             </button>
@@ -130,28 +129,6 @@
                 Працюємо з <span>11:00</span> до <span>22:30</span>
             </div>
         </div>
-        <!-- <div class="burger-menu border" [ngClass]="state ? 'active' : ''" (click)="state = !state">
-        <div class="header-user border"  (click)="showAuth()">
-            <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt="user">
-        </div>
-        <ul class="secondary-nav">
-            <li class="menu-item">
-                <a routerLink="/dostavka-ta-oplata">
-                    <div>Доставка та оплата</div>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a routerLink="/about-us">
-                    <div>Про нас</div>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a routerLink="/actions">
-                    <div>Акції</div>
-                </a>
-            </li>
-        </ul>
-    </div> -->
         <app-authorization class="header-user"></app-authorization>
         <app-header-basket class="header-basket"></app-header-basket>
     </div>

@@ -32,7 +32,7 @@
     max-width: 600px;
 
     & .popup-align {
-        padding: 50px 60px 45px 60px;
+      padding: 30px 40px 25px 40px;
         overflow: hidden;
         text-align: center;
         font-size: 18px;
@@ -77,6 +77,11 @@
     -webkit-transition: 0.35s;
     transition: 0.35s;
     text-overflow: ellipsis;
+
+  &.error{
+    border-color: red;
+    color: red;
+  }
 }
 
 .btn-block {

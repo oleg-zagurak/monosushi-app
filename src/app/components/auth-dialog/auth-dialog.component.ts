@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 
@@ -14,7 +14,8 @@ export class AuthDialogComponent {
   public registerForm!: FormGroup;
   public authError = false;
   public disabledOnLoad = false;
-  
+  public passwordError = false;
+
   constructor(private fb: FormBuilder,
     private auth: AuthService,
     private dialog: MatDialogRef<AuthDialogComponent>) { }
@@ -57,8 +58,8 @@ export class AuthDialogComponent {
 
   registerUser(): void {
     this.disabledOnLoad = true;
-    const { email, password, passwordConfirmation } = this.registerForm.value;
-    if (password === passwordConfirmation && this.registerForm.valid) {
+    const { email, password} = this.registerForm.value;
+    if (!this.passwordError && this.registerForm.valid) {
       this.auth.register(email, password, this.registerForm.value).then(() => {
         this.dialog.close()
       })
@@ -77,5 +78,17 @@ export class AuthDialogComponent {
     this.authError = false;
     this.loginForm.reset();
     this.registerForm.reset();
+  }
+
+  checkPassword(): void{
+    this.passwordError = this.password.value !== this.passwordConfirmation.value;
+  }
+
+  get password(): AbstractControl{
+    return this.registerForm.controls['password']
+  }
+
+  get passwordConfirmation(): AbstractControl{
+    return this.registerForm.controls['passwordConfirmation']
   }
 }

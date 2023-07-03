@@ -47,4 +47,5 @@ export class ProductInfoComponent {
   addOrder(): void{
     this.orders.add(this.product);
   }
+  
 }

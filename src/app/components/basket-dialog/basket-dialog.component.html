@@ -43,7 +43,8 @@
         <div class="cart_bottom bg-mono">
             <div class="cart_price-wrap">
                 Сума: <b id="card-total-price" class="card-total-price">{{totalPrice}}</b> грн </div>
-            <a href="/" class="btn disabled" id="cart-submit">ОФОРМИТИ ЗАМОВЛЕННЯ</a>
+          <a routerLink="/checkout" class="btn" id="cart-submit" [ngClass]="{'disabled': orders.length === 0}">
+            ОФОРМИТИ ЗАМОВЛЕННЯ</a>
         </div>
     </div>
 </div>

@@ -39,16 +39,18 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <input class="input" name="password" type="password" placeholder="Пароль"
-                            formControlName="password">
+                            formControlName="password" (input)="checkPassword()">
                     </div>
                     <div class="col-sm-6">
                         <input class="input" name="password2" type="password" placeholder="Повторіть пароль"
-                            formControlName="passwordConfirmation">
+                            formControlName="passwordConfirmation" (input)="checkPassword()"
+                               [ngClass]="{'error': passwordError}">
                     </div>
                 </div>
                 <button class="btn btn-primary btn-block" type="button" [disabled]="disabledOnLoad"
                 (click)="registerUser()">Зареєструватись</button>
                 <div class="error-message" *ngIf="authError">Помилка реєстрації. Перевірте правильність даних.</div>
+                <div class="error-message" *ngIf="passwordError">Паролі не однакові.</div>
             </form>
             <div class="links reg">Вже зареєстровані? <a class="open-popup" (click)="showReg()">Увійти</a></div>
         </div>
