@@ -39,7 +39,7 @@ export class BasketDialogComponent {
       .reduce((total: number, product: IProduct) => total + product.count, 0);
   }
 
-  delete(id: number): void{
+  delete(id: string): void{
     this.ordersService.delete(id);
   }
 

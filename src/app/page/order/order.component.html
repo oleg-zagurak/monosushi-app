@@ -2,68 +2,53 @@
 <section class="checkout-section ">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-xl-6 col-lg-10 col-12">
+      <div class="cart-empty-message" *ngIf="products.length === 0">
+        <div class="cart-empty-img">
+            <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/icons/cart-empty-img.svg"
+                alt="">
+        </div>
+        <h3 class="title h3">Кошик порожній</h3>
+        <a class="btn btn-primary" href="/product-category/roli">Перейти до каталогу</a>
+        <div class="header-m"></div>
+    </div>
+      <div class="col-xl-6 col-lg-10 col-12" *ngIf="products.length > 0">
         <div class="spacer-md"></div>
         <div class="center-info">
           <div class="h2 title text-center">
             Оформити замовлення </div>
         </div>
-        <form novalidate="" id="checkout-form" class="form delivery-form">
+        <form novalidate="" id="checkout-form" class="form delivery-form" [formGroup]="orderForm">
           <div class="form-group">
-            <div class="checkout-products">
-              <div class="prod_horiz cart-product js-product  " data-price="267"
-                   data-key="d490d7b4576290fa60eb31b5fc917ad1" data-things="1">
-                <a class="prod_horiz-img"
-                   href="https://monosushi.com.ua/product/filadelfiya-z-lososem/">
+            <div class="checkout-products" *ngFor="let product of products">
+              <div class="prod_horiz cart-product js-product">
+                <a class="prod_horiz-img" [routerLink]="['/product', product.id]">
                   <img class="img"
-                       src="https://monosushi.com.ua/wp-content/uploads/2020/11/1.-filadelfiya-z-lososem-122x50.jpg.pagespeed.ce.lgHOCenxAP.jpg"
-                       oncontextmenu="return false">
+                       [src]="product.imagePath">
                 </a>
                 <div class="prod_horiz-desc">
-                  <a class="title" href="https://monosushi.com.ua/product/filadelfiya-z-lososem/">
-                    Філадельфія з лососем </a>
+                  <a class="title" [routerLink]="['/product', product.id]">{{product.name}}</a>
                   <div class="prod_horiz-controls">
                     <div class="thumb-input-number">
-                      <button type="button" class="decrement in-cart"
-                              data-key="d490d7b4576290fa60eb31b5fc917ad1">-</button>
-                      <input class="product-qty" value="1" readonly="" tabindex="-1" max="999"
-                             data-id="600" data-key="d490d7b4576290fa60eb31b5fc917ad1">
-                      <button type="button" class="increment in-cart"
-                              data-key="d490d7b4576290fa60eb31b5fc917ad1">+</button>
+                      <button type="button" class="decrement in-cart" (click)="setAmount(false, product)">-</button>
+                      <input class="product-qty" [value]="product.count" readonly="" tabindex="-1" max="999"
+                             data-id="600">
+                      <button type="button" class="increment in-cart" (click)="setAmount(true, product)">+</button>
                     </div>
                     <div class="price_default">
-                      <b class="price">267</b>
+                      <b class="price">{{product.price}}</b>
                       грн
                     </div>
-                    <button type="button" class="btn-close remove-product"
-                            data-key="d490d7b4576290fa60eb31b5fc917ad1">
-                      <div class="trash"></div>
+                    <button type="button" class="btn-close remove-product">
+                      <div class="trash" (click)="delete(product.id)"></div>
                     </button>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="price-wrapp all-product-price all_price text-right" style="display: none">
-              <span><b class="all-product-price-el-all">267</b> грн</span>
-            </div>
             <div class="price-wrapp text-right">
-              До оплати: <span><b class="all-product-price-el" data-total="267">267</b>
-                                грн</span>
+              До оплати: <span><b class="all-product-price-el">{{totalPrice}}</b>грн</span>
             </div>
           </div>
-
-          <div class="form-group">
-            <div class="row form-group-row">
-              <div class="col-md-6">
-                <div class="input-button">
-                  <input type="text" class="input m-0" placeholder="Введіть промокод">
-                  <button type="button" class="btn btn-primary" id="apply-coupon">
-                    Застосувати </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
           <div class="form-group user-form">
             <div class="form-title title">
               <i class="number-title"><b>1</b></i>
@@ -74,7 +59,7 @@
               <div class="col-sm-6">
                 <div class="select-mat">
                   <mat-form-field>
-                    <mat-select [value]="1">
+                    <mat-select [value]="1" formControlName="devicesCount">
                       <mat-option [value]="1">1</mat-option>
                       <mat-option [value]="2">2</mat-option>
                       <mat-option [value]="3">3</mat-option>
@@ -122,31 +107,16 @@
             <div class="checkbox-entry-wrap payment-entry-wrap payment_method_cod">
               <label class="checkbox-entry">
                 <input type="radio" id="payment_method_cod" class="toggle-block-control" data-block="2"
-                       data-rel="cod" name="payment_method" checked="" value="cod">
+                       data-rel="cod" name="paymentType" checked="" value="cod" formControlName="paymentType">
                 <span>Оплата готівкою</span>
               </label>
             </div>
             <div class="checkbox-entry-wrap payment-entry-wrap payment_method_liqpay">
               <label class="checkbox-entry">
                 <input type="radio" id="payment_method_liqpay" class="toggle-block-control"
-                       data-block="2" data-rel="liqpay" name="payment_method" value="liqpay">
+                       data-block="2" data-rel="liqpay" name="paymentType" value="liqpay" formControlName="paymentType">
                 <span>Безготівкова оплата</span>
               </label>
-            </div>
-            <div class="prod_horiz type2 js-checkout-product things" style="display: none !important;"
-                 data-price="15">
-              <div class="prod_horiz-desc">
-                <div class="thumb-input-number">
-                  <button type="button" class="decrement">-</button>
-                  <input id="things-count" class="product-qty" value="0" readonly="" tabindex="-1"
-                         data-min="0">
-                  <button type="button" class="increment">+</button>
-                </div>
-                <div class="price-wrap">
-                  <b class="price">0</b>
-                  грн
-                </div>
-              </div>
             </div>
           </div>
           <div class="form-group delivery-form-group">
@@ -157,32 +127,26 @@
             </div>
             <div class="checkbox-entry-wrap">
               <label class="checkbox-entry">
-                <input id="driveDelivery" type="radio" name="delivery_method"
-                       class="toggle-block-control" data-min-amount="" data-discount-percent=""
-                       data-surprice="" data-block="1" data-rel="4" data-checked="courier"
-                       data-method="courier" checked="" value="courier">
-                <span>
-                                    Доставка (У зв’язку із відключенням світла, якщо ліфт не працює кур’єр піднімається
+                <input id="driveDelivery" type="radio" name="deliveryType"
+                       class="toggle-block-control"
+                       data-rel="4" data-checked="courier"  value="courier" formControlName="deliveryType">
+                <span> Доставка (У зв’язку із відключенням світла, якщо ліфт не працює кур’єр піднімається
                                     тільки до п’ятого поверху. Дякуємо за розуміння) </span>
               </label>
             </div>
             <div class="checkbox-entry-wrap">
               <label class="checkbox-entry">
-                <input id="driveDelivery" type="radio" name="delivery_method"
-                       class="toggle-block-control" data-min-amount="" data-discount-percent=""
-                       data-surprice="&quot;Запечені моно макі з лососем&quot; в подарунок" data-block="1"
-                       data-rel="1" data-checked="courier" data-method="local_pickup" value="local_pickup">
-                <span>
-                                    Самовивіз ( <b>"Запечені моно макі з лососем" в подарунок</b> )
-                                </span>
+                <input id="driveDelivery" type="radio" name="deliveryType"
+                       class="toggle-block-control"  data-block="1"
+                       data-rel="1" value="local" formControlName="deliveryType">
+                <span>Самовивіз</span>
               </label>
             </div>
             <div class="checkbox-entry-wrap toggle-block" data-rel="4">
               <label class="checkbox-entry">
                 <input type="checkbox" class="toggle-block-control" data-block="4" checked=""
-                       data-rel="1" name="at_time" value="at_time">
-                <span>
-                                    Заздалегідь </span>
+                       data-rel="1" name="orderBefore" value="at_time" formControlName="orderBefore">
+                <span>Заздалегідь </span>
               </label>
             </div>
             <div class="toggle-blocks mob-mt-30">
@@ -190,16 +154,16 @@
                 <div class="spacer-xs dn-mobile"></div>
                 <div class="row form-group-row">
                   <div class="col-12 col-md-6">
-                    <input type="text" name="first_name" class="input" placeholder="Вашe ім’я*"
-                           value="" required="">
+                    <input type="text" name="name" class="input" placeholder="Вашe ім’я*"
+                           value="" required="" formControlName="name">
                   </div>
                   <div class="col-12 col-md-6">
-                    <input class="input inputmask user-phone" name="phone" type="text" value=""
-                           placeholder="Телефон*" inputmode="numeric" required="">
+                    <input class="input inputmask user-phone" name="tel" type="text" value=""
+                           placeholder="Телефон*" inputmode="numeric" required="" formControlName="tel">
                   </div>
                 </div>
                 <div class="toggle-block local_visible" data-block="4" data-rel="1"
-                     style="display:block" data-min-time="00.30.00">
+                     style="display:block" *ngIf="getByControlName('orderBefore') === 'true'">
                   <div class="spacer-xs"></div>
                   <div class="row form-group-row">
                     <div class="col-sm-6">
@@ -207,8 +171,7 @@
                         <mat-form-field class="example-full-width">
                           <input matInput [matDatepicker]="picker" [min]="minDate"
                                  [max]="maxDate" placeholder="Дата доставки"
-                                 (dateInput)="addEvent('input', $event)"
-                                 (dateChange)="addEvent('change', $event)">
+                                 (change)="addEvent($event)" formControlName="date">
                           <mat-datepicker-toggle matIconSuffix [for]="picker">
                             <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
                           </mat-datepicker-toggle>
@@ -220,7 +183,7 @@
                       <div class="res-gps">
                         <div class="select-mat">
                           <mat-form-field>
-                            <mat-select [value]="'1'">
+                            <mat-select [value]="'1'" formControlName="timeInterval">
                               <mat-option value="1" disabled="">
                                 Виберіть часовий інтервал </mat-option>
                               <mat-option value="11:00 - 11:15">11:00 - 11:15</mat-option>
@@ -277,12 +240,12 @@
                     </div>
                   </div>
                 </div>
-                <div class="spacer-xs"></div>
-                <div class="row form-group-row">
+                <div class="row form-group-row" *ngIf="getByControlName('deliveryType') === 'local'">
+                  <div class="spacer-xs"></div>
                   <div class="col-sm-12 col-12">
                     <div class="select-mat">
                       <mat-form-field>
-                        <mat-select [value]="'0'">
+                        <mat-select  formControlName="ourAdress" >
                           <mat-option selected="" disabled="" value="0">
                             Оберіть адресу самовивозу</mat-option>
                           <mat-option value="1">Чорновола 95</mat-option>
@@ -293,21 +256,21 @@
                   </div>
                 </div>
                 <div class="spacer-xs"></div>
-                <div class="row form-group-row inputs-wrap">
+                <div class="row form-group-row inputs-wrap" *ngIf="getByControlName('deliveryType') !== 'local'">
                   <div class="col-12 col-sm-6">
                     <input id="streetAutocomplete" class="input ui-autocomplete-input" type="text"
-                           placeholder="Вулиця*" name="street" value="" required="" autocomplete="off">
+                           placeholder="Вулиця*" name="street" value="" required="" autocomplete="off" formControlName="street">
                   </div>
                   <div class="col-12 col-sm-6">
                     <input id="houseNumber" class="input" type="text" placeholder="Номер будинку*"
-                           name="house" value="" required="" maxlength="8">
+                           name="house" value="" required="" maxlength="8" formControlName="buildingNumber">
                   </div>
                   <div class="col-sm-6">
                     <input type="text" class="input" name="entrance" maxlength="6"
-                           placeholder="Під'їзд" value="">
+                           placeholder="Під'їзд" value="" formControlName="enterence">
                   </div>
                   <div class="col-sm-6">
-                    <input type="number" class="input" name="flat" placeholder="Квартира" value="">
+                    <input type="number" class="input" name="flat" placeholder="Квартира" value="" formControlName="flatNumber">
                   </div>
                 </div>
                 <hr>
@@ -332,14 +295,14 @@
                 <div class="checkbox-entry-wrap d-block">
                   <label class="checkbox-entry">
                     <input type="checkbox" name="is_comment" class="toggle-block-control"
-                           data-block="3" data-rel="1"><span>
+                           data-block="3" data-rel="1" #kitchen><span>
                                             Додати коментар для кухні </span>
                   </label>
                 </div>
                 <div class="spacer-xs"></div>
                 <div class="toggle-block" data-block="3" data-rel="1">
                                     <textarea name="comment_kitchen" class="input" placeholder="Ваш коментар для кухні"
-                                              spellcheck="false"></textarea>
+                                              spellcheck="false" *ngIf=""></textarea>
                 </div>
                 <div class="search-mobile-button" style="display:none;">
                   <button id="StartSearch" type="button" class="btn btn-primary btn-block">
@@ -351,45 +314,35 @@
                   <div class="checkout-map"><app-map></app-map></div>
                   <div class="order-wrap">
                     <div class="deliveryWarning">
-                      <div class="errorMsg empty-name" style="display: block;">
+                      <div class="errorMsg empty-name" style="display: block;" *ngIf="!getByControlName('name')">
                         <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/warning.svg"
                              alt="warning" oncontextmenu="return false">
                         <p>Введіть ваше ім'я</p>
                       </div>
-                      <div class="errorMsg empty-phone" style="display: block;">
+                      <div class="errorMsg empty-phone" style="display: block;" *ngIf="!getByControlName('tel')">
                         <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/warning.svg"
                              alt="warning" oncontextmenu="return false">
                         <p>Введіть ваш номер телефону</p>
                       </div>
-                      <div class="errorMsg empty-delivery-date" style="display: block;">
+                      <div class="errorMsg empty-delivery-date" style="display: block;" *ngIf="isTime">
                         <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/warning.svg"
                              alt="warning" oncontextmenu="return false">
                         <p>Введіть дату та час доставки</p>
                       </div>
-                      <div class="errorMsg empty-address" style="display: block;">
+                      <div class="errorMsg empty-address" style="display: block;" *ngIf="isAddress">
                         <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/warning.svg"
                              alt="warning" oncontextmenu="return false">
                         <p>Введіть вашу адресу та номер будинку</p>
                       </div>
-                      <div class="errorMsg empty-house">
-                        <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/warning.svg"
-                             alt="warning" oncontextmenu="return false">
-                        <p>Невірна адреса</p>
-                      </div>
-                      <div class="errorMsg noPriceRoll">
-                        <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/warning.svg"
-                             alt="warning" oncontextmenu="return false">
-                        <p>
-                          *Для того щоб отримати "Запечені моно макі з лососем" у подарунок,
-                          мінімальна сума
-                          замовлення повинна становити 300 грн </p>
-                      </div>
+                      <div class="errorMsg select_point" style="display: block;" *ngIf="selfPick">
+                        <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/warning.svg" alt="warning">
+                        <p>Оберіть адресу самовивозу</p>
                     </div>
-                    <div class="main-order-wrapp">
+                    </div>
+                    <div class="main-order-wrapp" id="order-btn">
                       <div class="text-center w-100">
-                        <button type="submit"
-                                class="btn btn-primary main-order-button">
-                          <!-- disabled -->
+                        <button type="submit" [ngClass]="{ 'disabled': !isValidate}"
+                                class="btn btn-primary main-order-button" (click)="createOrder()">
                           ОФОРМИТИ ЗАМОВЛЕННЯ </button>
                       </div>
                     </div>

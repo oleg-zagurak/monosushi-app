@@ -18,9 +18,9 @@ export class ActionsComponent {
   }
 
   getActions(): void {
-    this.db.getAll<IAction>().subscribe({
+    this.db.getAll().subscribe({
       next: data => {
-        this.actions = data;
+        this.actions = data as IAction[];
       },
       error: e => {
         console.error(e)

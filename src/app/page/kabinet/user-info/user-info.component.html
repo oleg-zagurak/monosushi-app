@@ -6,30 +6,18 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <input type="text" class="input" name="first_name" placeholder="*Ваше ім'я">
+                <input type="text" class="input" name="first_name" placeholder="*Ваше ім'я" [value]="user.name">
             </div>
             <div class="col-md-6">
-                <input type="text" class="input" name="last_name" placeholder="*Ваше прізвище">
+                <input type="text" class="input" name="last_name" placeholder="*Ваше прізвище" [value]="user.surname">
             </div>
         </div>
-        <input class="input inputmask" name="phone" type="text" inputmode="numeric" placeholder="*Ваш номер телефону">
-        <input type="email" name="email" class="input" placeholder="*Ваш емейл">
-    </div>
-    <div class="form-group">
-        <div class="form-title title">
-            <i class="number-title"><b>2</b></i>
-            <h5>Адреси</h5>
-        </div>
-        <div class="cabinet_address-wrap">
-            <table class="cabinet_address">
-                <tbody>
-                </tbody>
-            </table>
-        </div>
+        <input class="input inputmask" name="phone" type="text" inputmode="numeric" placeholder="*Ваш номер телефону"
+        [value]="user.tel">
+        <input type="email" name="email" class="input" placeholder="*Ваш емейл" [value]="user.email">
     </div>
     <div class="cabinet_address-buttons">
-        <button class="add-btn" type="button">Додати адресу</button>
-        <button class="save-btn" type="button" (click)="openSavePopup()">Зберегти зміни</button>
+        <button class="save-btn" type="button" (click)="openSave()">Зберегти зміни</button>
     </div>
 </form>
-<app-save-popup [show]="saveModal" (hide)="openSavePopup()"></app-save-popup>
+<app-save-popup [show]="saveModal" (hide)="openSave()"></app-save-popup>

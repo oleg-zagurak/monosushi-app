@@ -45,9 +45,9 @@ export class ProductCategoryComponent {
 
   ngOnInit(): void {
     if(this.homeLocation){
-      const subscription = this.db.getByCategory<IProduct>('roli').subscribe({
+      const subscription = this.db.getByCategory('roli').subscribe({
         next: data => {
-          this.products = data;
+          this.products = data as IProduct[];
         },
         error: e => {
           console.error(e)
@@ -73,9 +73,9 @@ export class ProductCategoryComponent {
   getByCategory(choose: boolean): void {
     let category = this.activatedRoute.snapshot.paramMap.get('category') as string;
     let subcategory = this.activatedRoute.snapshot.paramMap.get('subcategory') as string;
-    const subscription = this.db.getByCategory<IProduct>(category).subscribe({
+    const subscription = this.db.getByCategory(category).subscribe({
       next: data => {
-        this.products = data;
+        this.products = data as IProduct[];
         if(!choose && subcategory) this.filter(subcategory);
         this.setCategoryName(choose);
       },
@@ -110,7 +110,6 @@ export class ProductCategoryComponent {
       let filter = target.dataset['subcategory'] || 'all';
       this.filter(filter);
       target.parentElement?.classList.add('active');
-      console.log('filter', this.filteredProducts)
     }
   }
 
@@ -120,7 +119,6 @@ export class ProductCategoryComponent {
       return
     }
     if (filter) {
-      console.log(filter)
       this.filteredProducts = this.products.filter(product => product.category.subcategory === filter)
     }
   }

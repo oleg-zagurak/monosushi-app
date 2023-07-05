@@ -104,6 +104,10 @@
   }
 }
 
+.mat-datepicker-content .mat-calendar{
+  height: auto !important;
+}
+
 .select-mat {
 
   & .mat-mdc-form-field-subscript-wrapper {

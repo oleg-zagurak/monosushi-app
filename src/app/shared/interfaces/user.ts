@@ -8,7 +8,7 @@ export interface IUserReq {
 }
 
 export interface IUser extends IUserReq {
-    id: number
+    id: string
 }
 
 export enum ROLE {

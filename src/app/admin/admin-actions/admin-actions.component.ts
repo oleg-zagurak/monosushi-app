@@ -17,7 +17,7 @@ export class AdminActionsComponent {
   public progress = 0;
   public isUploaded = false;
   public editable = false;
-  private currentId = 0;
+  private currentId = '';
 
   constructor(private db: DbDataService,
     private fb: FormBuilder,
@@ -30,8 +30,8 @@ export class AdminActionsComponent {
     this.initForm();
 
   }
-  ngDoCheck(): void{
-    if(this.progress !== this.uploadImage.percentage) this.progress = this.uploadImage.percentage;
+  ngDoCheck(): void {
+    if (this.progress !== this.uploadImage.percentage) this.progress = this.uploadImage.percentage;
   }
   private initForm(): void {
     this.actionsForm = this.fb.group({
@@ -42,9 +42,9 @@ export class AdminActionsComponent {
     })
   }
   getActions(): void {
-    const subscription = this.db.getAll<IAction>().subscribe({
+    const subscription = this.db.getAll().subscribe({
       next: data => {
-        this.actions = data;
+        this.actions = data as IAction[];
       },
       error: e => {
         console.error(e)
@@ -54,20 +54,15 @@ export class AdminActionsComponent {
       }
     })
   }
-  deleteAction(id: number): void {
+  deleteAction(id: string): void {
     let item = this.actions.find(action => action.id === id);
-    if(item) this.uploadImage.deleteImg(item.imagePath);
-    const subscription = this.db.delete(id).subscribe({
-      next: () => {
-        this.getActions()
-      },
-      error: e => {
-        console.error(e);
-      },
-      complete: () => {
-        subscription.unsubscribe();
-      }
+    if (item) this.uploadImage.deleteImg(item.imagePath);
+    this.db.delete(id).then(() => {
+      this.getActions()
     })
+      .catch((e) => {
+        console.error(e);
+      })
   }
   addAction() {
     if (this.actionsForm.valid) {
@@ -76,17 +71,12 @@ export class AdminActionsComponent {
         ...this.actionsForm.value,
         date: date
       }
-      const subscription = this.db.create(action).subscribe({
-        next: () => {
-          this.getActions();
-        },
-        error: e => {
+      this.db.create(action).then(() => {
+        this.getActions();
+      })
+        .catch((e) => {
           console.error(e);
-        },
-        complete: () => {
-          subscription.unsubscribe();
-        }
-      });
+        })
       this.reset();
     }
   }
@@ -110,17 +100,12 @@ export class AdminActionsComponent {
         ...this.actionsForm.value,
         date
       };
-      const subscription = this.db.update<IReqAction, IAction>(this.currentId, action).subscribe({
-        next: () => {
-          this.getActions();
-        },
-        error: e => {
-          console.error(e);
-        },
-        complete: () => {
-          subscription.unsubscribe();
-        }
+      this.db.update(this.currentId, action).then(() => {
+        this.getActions();
       })
+        .catch((e) => {
+          console.error(e)
+        })
       this.reset();
     }
   }
@@ -164,7 +149,7 @@ export class AdminActionsComponent {
     this.formOpened = false;
     this.isUploaded = false;
     this.progress = 0;
-    this.currentId = 0;
+    this.currentId = '';
     this.editable = false;
   }
   createDate(): string {

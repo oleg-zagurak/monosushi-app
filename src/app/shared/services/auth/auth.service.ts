@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { Firestore, doc, docData, setDoc } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { OrdersService } from '../orders/orders.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class AuthService {
   private logged = false;
   constructor(private auth: Auth,
     private fr: Firestore,
-    private router: Router) { }
+    private router: Router,
+    private orders: OrdersService) { }
 
   get isAdmin(): boolean {
     return this.admin;
@@ -31,9 +33,10 @@ export class AuthService {
     const uid = credential.user.uid;
     const docRef = doc(this.fr, this.api, uid);
     docData(docRef).subscribe((user) => {
-      const currentUser = { ...user, uid };
+      const currentUser = { ...user, id: uid };
       localStorage.setItem('currentUser', JSON.stringify(currentUser));
       this.logged = true;
+      this.orders.clear();
       if (user['role'] === ROLE.USER) this.router.navigateByUrl('/kabinet');
       if (user['role'] === ROLE.ADMIN) {
         this.admin = true;
@@ -61,8 +64,9 @@ export class AuthService {
     const docRef = doc(this.fr, this.api, uid);
     setDoc(docRef, user)
       .then(() => {
-        const currentUser = { ...user, uid };
+        const currentUser = { ...user, id: uid };
         localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        this.orders.clear();
         this.logged = true;
         this.authSubject.next(true);
         this.router.navigateByUrl('/kabinet');
@@ -72,8 +76,8 @@ export class AuthService {
       })
   }
 
-  logout(): void{
-    localStorage.removeItem('currentUser');
+  logout(): void {
+    localStorage.clear();
     this.authSubject.next(false);
   }
 }

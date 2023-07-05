@@ -18,7 +18,7 @@ export class AdminCategoryComponent {
   public progress = 0;
   public isUploaded = false;
   public editable = false;
-  private currentId = 0;
+  private currentId = '';
 
   constructor(private db: DbDataService,
     private fb: FormBuilder,
@@ -30,8 +30,8 @@ export class AdminCategoryComponent {
     this.initForm();
   }
 
-  ngDoCheck(): void{
-    if(this.progress !== this.uploadImage.percentage) this.progress = this.uploadImage.percentage;
+  ngDoCheck(): void {
+    if (this.progress !== this.uploadImage.percentage) this.progress = this.uploadImage.percentage;
   }
 
   initForm(): void {
@@ -42,9 +42,9 @@ export class AdminCategoryComponent {
     })
   }
   getCategories(): void {
-    const subscription = this.db.getAll<ICategories>().subscribe({
+    const subscription = this.db.getAll().subscribe({
       next: data => {
-        this.categories = data;
+        this.categories = data as ICategories[];
       },
       error: e => {
         console.error(e)
@@ -54,37 +54,27 @@ export class AdminCategoryComponent {
       }
     })
   }
-  deleteCategory(id: number): void {
+  deleteCategory(id: string): void {
     let item = this.categories.find(category => category.id === id);
-    if(item) this.uploadImage.deleteImg(item.imagePath);
-    const subscription = this.db.delete(id).subscribe({
-      next: () => {
-        this.getCategories()
-      },
-      error: e => {
-        console.error(e);
-      },
-      complete: () => {
-        subscription.unsubscribe();
-      }
+    if (item) this.uploadImage.deleteImg(item.imagePath);
+    this.db.delete(id).then(() => {
+      this.getCategories()
     })
+      .catch((e) => {
+        console.error(e)
+      })
   }
   addCategory() {
     if (this.categoriesForm.valid) {
       let category: IReqCategories = {
         ...this.categoriesForm.value
       }
-      const subscription = this.db.create(category).subscribe({
-        next: () => {
-          this.getCategories();
-        },
-        error: e => {
-          console.error(e);
-        },
-        complete: () => {
-          subscription.unsubscribe();
-        }
-      });
+      this.db.create(category).then(() => {
+        this.getCategories()
+      })
+        .catch((e) => {
+          console.error(e)
+        })
       this.reset();
     }
   }
@@ -106,17 +96,12 @@ export class AdminCategoryComponent {
         ...this.categoriesForm.value
       };
 
-      const subscription = this.db.update<IReqCategories, ICategories>(this.currentId, category).subscribe({
-        next: () => {
-          this.getCategories();
-        },
-        error: e => {
-          console.error(e);
-        },
-        complete: () => {
-          subscription.unsubscribe();
-        }
+      this.db.update(this.currentId, category).then(() => {
+        this.getCategories()
       })
+        .catch((e) => {
+          console.error(e)
+        })
       this.reset();
     }
   }
@@ -151,15 +136,15 @@ export class AdminCategoryComponent {
   getByControl(name: string): string {
     return this.categoriesForm.get(name)?.value;
   }
-  show(): void{
-    if(!this.editable) this.formOpened = !this.formOpened;
+  show(): void {
+    if (!this.editable) this.formOpened = !this.formOpened;
   }
   reset(): void {
     this.categoriesForm.reset();
     this.formOpened = false;
     this.isUploaded = false;
     this.progress = 0;
-    this.currentId = 0;
+    this.currentId = '';
     this.editable = false;
   }
 }

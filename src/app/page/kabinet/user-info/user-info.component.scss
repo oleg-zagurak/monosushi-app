@@ -85,18 +85,6 @@
 
     & .save-btn {
         @include btn($main-bg-color, $default-bg-color, 16px 22px, 20px);
-        max-width: 257px;
         width: 100%;
-    }
-
-    & .add-btn {
-        @include btn($default-bg-color, $main-bg-color, 16px 22px, 20px);
-        max-width: 257px;
-        width: 100%;
-        border-color: $main-bg-color;
-
-        &:hover {
-            border-color: $main-bg-color;
-        }
     }
 }

@@ -7,5 +7,5 @@ export interface IReqAction {
 }
 
 export interface IAction extends IReqAction{
-    id: number
+    id: string
 }

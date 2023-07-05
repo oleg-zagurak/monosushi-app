@@ -6,5 +6,5 @@ export interface IReqCategories {
 }
 
 export interface ICategories extends IReqCategories{
-    id: number
+    id: string
 }

@@ -19,7 +19,7 @@ export class AdminProductsComponent {
   public progress = 0;
   public isUploaded = false;
   public editable = false;
-  private currentId = 0;
+  private currentId = '';
   public showSubCategories = false;
 
   constructor(private db: DbDataService,
@@ -33,8 +33,8 @@ export class AdminProductsComponent {
     this.initForm();
   }
 
-  ngDoCheck(): void{
-    if(this.progress !== this.uploadImage.percentage) this.progress = this.uploadImage.percentage;
+  ngDoCheck(): void {
+    if (this.progress !== this.uploadImage.percentage) this.progress = this.uploadImage.percentage;
   }
 
   initForm(): void {
@@ -46,7 +46,7 @@ export class AdminProductsComponent {
       ingredients: [null, Validators.required],
       weight: [null, Validators.required],
       price: [null, Validators.required],
-      count: [1, {nonNullable: true}],
+      count: [1, { nonNullable: true }],
       category: [null, Validators.required],
     })
   }
@@ -54,22 +54,19 @@ export class AdminProductsComponent {
     return option1 && option2 ? option1.id === option2.id : option1 === option2;
   }
   getProducts(): void {
-    const subscription = this.db.getAll<IProduct>().subscribe({
+    this.db.getAll().subscribe({
       next: data => {
-        this.products = data;
+        this.products = data as IProduct[];
       },
       error: e => {
         console.error(e)
-      },
-      complete: () => {
-        subscription.unsubscribe();
       }
     })
   }
   getCategories(): void {
-    const subscription = this.db.getAll<ICategories>(environment.API.categories).subscribe({
+    const subscription = this.db.getAll(environment.API.categories).subscribe({
       next: data => {
-        this.categories = data;
+        this.categories = data as ICategories[];
       },
       error: e => {
         console.error(e)
@@ -79,24 +76,21 @@ export class AdminProductsComponent {
       }
     })
   }
-  deleteProduct(id: number): void {
+  deleteProduct(id: string): void {
     let item = this.products.find(product => product.id === id);
-    if(item) this.uploadImage.deleteImg(item.imagePath);
-    const subscription = this.db.delete(id).subscribe({
-      next: () => {
+    if (item) {
+      this.uploadImage.deleteImg(item.imagePath);
+      this.db.delete(id).then(() => {
         this.getProducts()
-      },
-      error: e => {
-        console.error(e);
-      },
-      complete: () => {
-        subscription.unsubscribe();
-      }
-    })
+      })
+        .catch((e) => {
+          console.error(e)
+        })
+    }
   }
-  createProduct(): IProductReq{
+  createProduct(): IProductReq {
     let { name, imagePath, path, ingredients, category, price, weight, subcategory, count } = this.productForm.value;
-    if(subcategory) category = {subcategory, ...category}
+    if (subcategory) category = { subcategory, ...category }
     let product: IProductReq = {
       name,
       imagePath,
@@ -112,17 +106,12 @@ export class AdminProductsComponent {
   addProduct() {
     if (this.productForm.valid) {
       let product: IProductReq = this.createProduct();
-      const subscription = this.db.create(product).subscribe({
-        next: () => {
-          this.getProducts();
-        },
-        error: e => {
-          console.error(e);
-        },
-        complete: () => {
-          subscription.unsubscribe();
-        }
-      });
+      this.db.create(product).then(() => {
+        this.getProducts()
+      })
+        .catch((e) => {
+          console.error(e)
+        })
       this.reset();
     }
   }
@@ -147,18 +136,12 @@ export class AdminProductsComponent {
       let product: IProductReq = {
         ...this.productForm.value
       };
-
-      const subscription = this.db.update<IProductReq, IProduct>(this.currentId, product).subscribe({
-        next: () => {
-          this.getProducts();
-        },
-        error: e => {
-          console.error(e);
-        },
-        complete: () => {
-          subscription.unsubscribe();
-        }
+      this.db.update(this.currentId, product).then(() => {
+        this.getProducts()
       })
+        .catch((e) => {
+          console.error(e)
+        })
       this.reset();
     }
   }
@@ -194,20 +177,20 @@ export class AdminProductsComponent {
   getByControl(name: string): string {
     return this.productForm.get(name)?.value;
   }
-  getCurrentCategory(): ICategories | null{
+  getCurrentCategory(): ICategories | null {
     return this.productForm.get('category')?.value;
   }
-  showSubCat(){
+  showSubCat() {
     let category = this.getCurrentCategory();
     category?.path === 'roli' ? this.showSubCategories = true : this.showSubCategories = false;
   }
-  show(): void{
-    if(!this.editable) {
+  show(): void {
+    if (!this.editable) {
       this.formOpened = !this.formOpened;
       this.productForm.reset();
     }
   }
-  cancel(): void{
+  cancel(): void {
     this.reset();
   }
   private reset(): void {
@@ -215,7 +198,7 @@ export class AdminProductsComponent {
     this.formOpened = false;
     this.isUploaded = false;
     this.progress = 0;
-    this.currentId = 0;
+    this.currentId = '';
     this.editable = false;
   }
 }

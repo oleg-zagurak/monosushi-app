@@ -1,0 +1,133 @@
+@import '../../shared/styles/variables';
+
+.wrapper {
+  width: 100%;
+}
+
+.empty-history {
+  margin-top: 35px;
+
+  & .simple-link {
+    position: relative;
+    font-size: 18px;
+  }
+}
+
+.table-out {
+  width: 100%;
+  text-align: left;
+
+  & tr {
+    width: 100%;
+
+    & td,
+    & th {
+      padding: 10px 0;
+    }
+
+    & td {
+      width: 100%;
+    }
+  }
+}
+
+.table-in {
+  width: 100%;
+  border-top: 3px solid $main-bg-color;
+
+  &:last-child {
+    border-bottom: 3px solid $main-bg-color;
+  }
+
+  & tr {
+    width: 100%;
+  }
+
+  & .order-row {
+
+    & td {
+      padding: 20px 0;
+    }
+
+    & .address{
+      overflow-wrap: break-word;
+    }
+  }
+
+  & .product-row {
+    border-top: 2px solid #dcdcdc;
+    padding: 10px 0;
+
+    & td {
+      padding: 20px 0;
+    }
+  }
+
+  & .status{
+    color: rgb(6, 197, 6);
+    position: relative;
+    margin-right: 15px;
+
+    &.pending{
+      color: orange;
+
+      &::before{
+        background-color: orange;
+      }
+    }
+    &::before{
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: rgb(6, 197, 6);
+      position: absolute;
+      top: 8px;
+      left: -9px;
+    }
+  }
+}
+
+.btn {
+  display: inline-block;
+  position: relative;
+  font-weight: 700;
+  font-size: 16px;
+  color: #b5d8f7;
+  cursor: pointer;
+  padding: 5px;
+  border: none;
+  background-color: transparent;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: auto;
+    right: 0;
+    height: 3px;
+    width: 0;
+    background: $main-bg-color;
+    transition: all 0.35s ease-out;
+  }
+
+  &:hover::before {
+    width: 100%;
+    right: auto;
+    left: 0;
+  }
+}
+
+.buttons{
+    display: flex;
+}
+
+.btn-row{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 100%;
+}

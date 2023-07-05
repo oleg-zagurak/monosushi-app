@@ -1,39 +1,45 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { DocumentData, DocumentReference, Firestore, addDoc, collection, collectionData, deleteDoc, doc, docData, query, updateDoc, where } from '@angular/fire/firestore';
 
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DbDataService {
-  constructor(private http: HttpClient) { }
-  private URL: string = environment.BACK_URL;
-  private api = { key: ''};
+  constructor(private store: Firestore) { }
+  private api = '';
   set API(apiKey: string){
-    this.api.key = this.URL + apiKey;
+    this.api = apiKey;
   }
 
-  getAll<T>(apiPath?: string): Observable<T[]>{
-    let path = this.api.key;
-    if(apiPath) path = this.URL + apiPath;
+  getAll(apiPath?: string): Observable<DocumentData[]>{
+    let path = this.api;
+    if(apiPath) path = apiPath;
+    return collectionData( collection(this.store, path), { idField: 'id' } );
+  }
+  getOne(id: string): Observable<DocumentData>{
+    const categoryDocumentReference = doc(this.store, `${this.api}/${id}`);
+    return docData(categoryDocumentReference, { idField: 'id' });
+  }
+  create(item: DocumentData): Promise<DocumentReference<DocumentData>>{
+    return addDoc(collection(this.store, this.api), item);
+  }
+  delete(id: string): Promise<void>{
+    const categoryDocumentReference = doc(this.store, `${this.api}/${id}`);
+    return deleteDoc(categoryDocumentReference);
+  }
+  update(id: string, item: DocumentData): Promise<void>{
+    const categoryDocumentReference = doc(this.store, `${this.api}/${id}`);
+    return updateDoc(categoryDocumentReference, {...item});
+  }
+  getByCategory(category: string): Observable<DocumentData[]> {
+    const q = query(collection(this.store, this.api), where('category.path', '==', `${category}`))
+    return collectionData( q, { idField: 'id' } );
+  }
 
-    return this.http.get<T[]>(path);
-  }
-  getOne<T>(id: number): Observable<T>{
-    return this.http.get<T>(`${this.api.key}/${id}`)
-  }
-  create<R, S>(item: R): Observable<S>{
-    return this.http.post<S>(this.api.key, item)
-  }
-  delete(id: number): Observable<void>{
-    return this.http.delete<void>(`${this.api.key}/${id}`)
-  }
-  update<R, S>(id: number, item: R): Observable<S>{
-    return this.http.patch<S>(`${this.api.key}/${id}`, item);
-  }
-  getByCategory<T>(category: string): Observable<T[]> {
-    return this.http.get<T[]>(`${this.api.key}/?category.path=${category}`);
+  getByUser(id: string): Observable<DocumentData[]> {
+    const q = query(collection(this.store, this.api), where('userId', '==', `${id}`))
+    return collectionData( q, { idField: 'id' } );
   }
 }

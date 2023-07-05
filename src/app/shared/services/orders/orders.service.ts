@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IProduct } from '../../interfaces/product';
 import { Subject } from 'rxjs';
+import { IUser } from '../../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,13 @@ export class OrdersService {
     this.basketChange.next(true);
   }
 
+  addToUser(): void{
+    let user: IUser | null = null;
+    if(localStorage.getItem('currentUser')) user = JSON.parse(localStorage.getItem('currentUser') as string);
+    if(user){
+      
+    }
+  }
   getOrders(): IProduct[] {
     let orders: IProduct[] = [];
     if (localStorage.length > 0 && localStorage.getItem('orders')) {
@@ -44,7 +52,7 @@ export class OrdersService {
     this.basketChange.next(true);
   }
 
-  delete(id: number): void {
+  delete(id: string): void {
     let orders: IProduct[] = JSON.parse(localStorage.getItem('orders') as string);
     let orderIndex: number = orders.findIndex((product) => product.id === id)
     if (orderIndex >= 0) {
@@ -54,5 +62,9 @@ export class OrdersService {
     } else {
       throw new Error('Product doesn\'t exist');
     }
+  }
+  clear(): void{
+    localStorage.removeItem('orders');
+    this.basketChange.next(true);
   }
 }
