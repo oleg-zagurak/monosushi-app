@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
@@ -33,7 +33,8 @@ const MATERIAL = [
     SwiperModule,
     CommonModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   exports: [
     ...MATERIAL,
@@ -42,6 +43,7 @@ const MATERIAL = [
     ReactiveFormsModule,
     HttpClientModule,
     MapComponent,
+    FormsModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'uk' },

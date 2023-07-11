@@ -98,6 +98,11 @@
         background: #dcdcdc;
     }
 
+    &.btn-primary{
+      border-color: $main-bg-color;
+      background: $main-bg-color;
+    }
+
     &:hover {
       background: transparent;
     }

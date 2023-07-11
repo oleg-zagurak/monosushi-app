@@ -283,26 +283,26 @@
                 <div class="checkbox-entry-wrap d-block">
                   <label class="checkbox-entry">
                     <input type="checkbox" name="is_comment" class="toggle-block-control"
-                           data-block="3" data-rel="0"><span>
+                           data-block="3" data-rel="0" (change)="showComment(true)"><span>
                                             Додати коментар </span>
                   </label>
                 </div>
                 <div class="toggle-block" data-block="3" data-rel="0">
                   <div class="spacer-xs"></div>
                   <textarea name="comment" class="input" placeholder="Ваш коментар"
-                            spellcheck="false"></textarea>
+                            spellcheck="false" *ngIf="comment"></textarea>
                 </div>
                 <div class="checkbox-entry-wrap d-block">
                   <label class="checkbox-entry">
                     <input type="checkbox" name="is_comment" class="toggle-block-control"
-                           data-block="3" data-rel="1" #kitchen><span>
-                                            Додати коментар для кухні </span>
+                           data-block="3" data-rel="1" (change)="showComment(false)"><span>
+                                            Додати коментар для кухні</span>
                   </label>
                 </div>
                 <div class="spacer-xs"></div>
                 <div class="toggle-block" data-block="3" data-rel="1">
                                     <textarea name="comment_kitchen" class="input" placeholder="Ваш коментар для кухні"
-                                              spellcheck="false" *ngIf=""></textarea>
+                                              spellcheck="false" *ngIf="kitchen"></textarea>
                 </div>
                 <div class="search-mobile-button" style="display:none;">
                   <button id="StartSearch" type="button" class="btn btn-primary btn-block">

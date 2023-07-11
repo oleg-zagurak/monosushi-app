@@ -29,6 +29,8 @@ export class OrderComponent {
   public isTime = false;
   public selfPick = false;
   public count = 0;
+  public kitchen = false;
+  public comment = false;
 
 
   constructor(private fb: FormBuilder,
@@ -196,5 +198,13 @@ export class OrderComponent {
     this.db.update('count', {count: this.count} ).catch((e) => {
       console.error(e);
     })
+  }
+
+  showComment(type: boolean): void{
+    if(type) {
+      this.comment = !this.comment
+    } else {
+      this.kitchen = !this.kitchen
+    }
   }
 }
