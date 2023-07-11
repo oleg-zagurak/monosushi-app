@@ -33,7 +33,7 @@
                                 <span class="status" [ngClass]="{'pending': !order.isDone}">
                                     {{order.isDone ? 'виконано' : 'в процесі'}}
                                 </span>
-              <button class="btn">Повторити</button>
+              <button class="btn" (click)="createOrder(order)">Повторити</button>
             </td>
           </tr>
           <tr *ngFor="let product of order.products" class="product-row">

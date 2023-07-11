@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {IProduct} from "../../../shared/interfaces/product";
-import { IOrder } from 'src/app/shared/interfaces/order';
+import { IOrder, IOrderReq } from 'src/app/shared/interfaces/order';
 import { DbDataService } from 'src/app/shared/services/database/db-data.service';
 import { IUser } from 'src/app/shared/interfaces/user';
 import { address } from 'src/app/shared/constants/self-address';
@@ -14,17 +14,72 @@ import { Timestamp } from "@angular/fire/firestore";
 export class HistoryComponent {
   public orders: IOrder[] = [];
   public user: IUser;
+  public count = 0;
   constructor(private db: DbDataService){
     this.user = JSON.parse(localStorage.getItem('currentUser') as string);
   }
 
   ngOnInit(): void{
+    this.getCount();
+    this.getOrders();
+  }
+
+  getOrders(): void{
     this.db.API = 'orders';
+
     this.db.getByUser(this.user.id).subscribe((data) => {
       this.orders = data as IOrder[];
       this.createAdress(this.orders[0])
     })
-    
+  }
+
+  createOrder(order: IOrderReq): void {
+    this.count = ++this.count;
+    let orderReq: IOrderReq = {
+      orderBefore: order.orderBefore,
+      orderNumber: this.count,
+      orderTime: order.orderTime,
+      ourAdress: order.ourAdress,
+      name: order.name,
+      date: order.date,
+      street: order.street,
+      flatNumber: order.flatNumber,
+      enterence: order.enterence,
+      isDone: false,
+      deliveryType: order.deliveryType,
+      devicesCount: order.devicesCount,
+      tel: order.tel,
+      timeInterval: order.timeInterval,
+      paymentType: order.paymentType,
+      products: order.products,
+      buildingNumber: order.buildingNumber,
+      userId: order.userId,
+    };
+    this.updateCount();
+    this.db.API = 'orders';
+    this.db.create(orderReq).then(() => {
+      this.getOrders();
+    },
+    (e) =>{
+      console.error(e)
+    })
+  }
+
+  getCount(): void{
+    this.db.API = 'count';
+    this.db.getOne('count').subscribe((data) => {
+      let number: number = data['count'] as number;
+      this.count = number;
+    },
+    (e) =>{
+      console.error(e)
+    })
+  }
+  updateCount(): void{
+    this.db.API = 'count';
+    this.db.update('count', {count: this.count} ).catch((e) => {
+      console.error(e);
+    })
   }
   getTotal(order: any): number{
     let sum = 0;

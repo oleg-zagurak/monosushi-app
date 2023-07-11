@@ -1,7 +1,7 @@
 import { Timestamp } from "@angular/fire/firestore";
 import { IProduct } from "./product";
 
-export interface IOrder {
+export interface IOrderReq {
     userId: string,
     products: IProduct[],
     isDone: boolean,
@@ -20,6 +20,9 @@ export interface IOrder {
     flatNumber: number | null,
     orderNumber: number,
     orderTime: Date | Timestamp,
+}
+
+export interface IOrder extends IOrderReq {
     id: string
 }
 

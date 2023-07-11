@@ -29,6 +29,7 @@ export class AuthorizationComponent {
         this.isLogged = this.auth.isLogged;
       } else {
         this.resetOnLogout();
+        location.reload()
       }
     })
   }
